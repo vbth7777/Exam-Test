@@ -41,7 +41,7 @@
         .container {
             background: var(--white);
             width: 100%;
-            max-width: 800px; /* Slightly wider for new format */
+            max-width: 800px;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             overflow: hidden;
@@ -111,7 +111,7 @@
 
         /* --- Quiz Screen --- */
         #quiz-container {
-            display: none; /* Hidden by default */
+            display: none;
         }
 
         .quiz-header {
@@ -132,7 +132,7 @@
         .progress {
             background-color: var(--accent-color);
             height: 100%;
-            width: 0%; /* Dynamically updated */
+            width: 0%;
             transition: width 0.4s ease;
         }
 
@@ -147,7 +147,6 @@
             font-weight: 500;
         }
 
-        /* --- New Question Formatting --- */
         .question-block {
             border: 1px solid var(--medium-gray);
             border-radius: var(--border-radius);
@@ -215,7 +214,7 @@
             background-color: #e9f5ff;
             border-left: 4px solid var(--primary-color);
             border-radius: var(--border-radius);
-            display: none; /* Hidden by default */
+            display: none;
         }
 
         #explanation-container h4 {
@@ -300,7 +299,7 @@
         }
 
         #results-container {
-            display: none; /* Hidden by default */
+            display: none;
             text-align: center;
         }
 
@@ -336,19 +335,10 @@
 
         /* --- Responsive Design --- */
         @media (max-width: 600px) {
-            header h1 {
-                font-size: 1.5rem;
-            }
-            main {
-                padding: 1.5rem;
-            }
-            .controls {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .btn {
-                width: 100%;
-            }
+            header h1 { font-size: 1.5rem; }
+            main { padding: 1.5rem; }
+            .controls { flex-direction: column; gap: 1rem; }
+            .btn { width: 100%; }
         }
     </style>
 </head>
@@ -426,103 +416,2808 @@
     </div>
 
     <script>
-        // --- Quiz Data ---
+        // --- Quiz Data in the new format ---
         const quizData = {
             CSI: {
                 title: "Customer Success & Implementation",
                 questions: [
-                    {
-                        question: "What is the primary goal of the CSI onboarding process?",
-                        options: ["To upsell additional products immediately.", "To ensure the customer achieves their desired outcomes while using the product.", "To gather as much technical data as possible.", "To finalize the billing and payment details."],
-                        answer: 1,
-                        explanation: "The core of Customer Success is ensuring the customer realizes value from the product, which leads to retention and satisfaction."
-                    },
-                    {
-                        question: "Which metric is most crucial for measuring CSI success in the first 90 days?",
-                        options: ["Number of support tickets created.", "Time to first value (TTFV).", "Customer's social media mentions.", "Server uptime."],
-                        answer: 1,
-                        explanation: "TTFV measures how quickly a new customer experiences the core value of your product, which is a strong indicator of long-term success."
-                    },
-                    {
-                        question: "A key stakeholder is unresponsive during the implementation phase. What is the best first step?",
-                        options: ["Immediately escalate to their manager.", "Pause the entire project until they respond.", "Send a polite follow-up email summarizing the need for their input and proposing a brief meeting.", "Assume they are busy and proceed without their input."],
-                        answer: 2,
-                        explanation: "A polite, professional follow-up that clearly states the need and offers a solution (a meeting) is the most effective and respectful first step."
-                    }
+                          {
+        "id": 1,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": "n-1", "label": "A" },
+          { "text": "n", "label": "B" },
+          { "text": "n+1", "label": "C" },
+          { "text": "1-n", "label": "D" }
+        ],
+        "question": "For each entity set in the E-R diagram we create a relation (table) in which there are n columns related to the ___ attributes defined for that set.",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 2,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": 2, "label": "A" },
+          { "text": 8, "label": "B" },
+          { "text": 10, "label": "C" },
+          { "text": 16, "label": "D" }
+        ],
+        "question": "The base of the binary number system is __.",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 3,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": 2, "label": "A" },
+          { "text": 8, "label": "B" },
+          { "text": 10, "label": "C" },
+          { "text": 16, "label": "D" }
+        ],
+        "question": "The base of the decimal number system is __.",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 4,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": 2, "label": "A" },
+          { "text": 8, "label": "B" },
+          { "text": 10, "label": "C" },
+          { "text": 16, "label": "D" }
+        ],
+        "question": "The base of the octal number system is __.\r\n",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 5,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": 2, "label": "A" },
+          { "text": 8, "label": "B" },
+          { "text": 10, "label": "C" },
+          { "text": 16, "label": "D" }
+        ],
+        "question": "The base of the hexadecimal number system is __.",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 6,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": 2, "label": "A" },
+          { "text": 4, "label": "B" },
+          { "text": 8, "label": "C" },
+          { "text": 16, "label": "D" }
+        ],
+        "question": "A byte consists of ___ bits.\r\n",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 7,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": 5, "label": "A" },
+          { "text": 10, "label": "B" },
+          { "text": 16, "label": "C" },
+          { "text": 32, "label": "D" }
+        ],
+        "question": "A control unit with five wires can define up to ___ operations.",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 8,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": 63, "label": "A" },
+          { "text": 64, "label": "B" },
+          { "text": 65, "label": "C" },
+          { "text": 66, "label": "D" },
+          { "text": "None of the others", "label": "E" }
+        ],
+        "question": "The maximum value of an octal integer with K=2 digits is Nmax=_____?",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 9,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": 30, "label": "A" },
+          { "text": 31, "label": "B" },
+          { "text": 32, "label": "C" },
+          { "text": 33, "label": "D" }
+        ],
+        "question": "The maximum value of a binary integer with K digits. For example, if K=5, then the maximum value is __?",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 10,
+        "type": "single",
+        "points": 1,
+        "correct": ["E"],
+        "options": [
+          { "text": 8, "label": "A" },
+          { "text": 16, "label": "B" },
+          { "text": 32, "label": "C" },
+          { "text": 64, "label": "D" },
+          { "text": 256, "label": "E" }
+        ],
+        "question": "EBCDIC can code up to how many different characters?",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 11,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": 4, "label": "A" },
+          { "text": 8, "label": "B" },
+          { "text": 16, "label": "C" },
+          { "text": 32, "label": "D" }
+        ],
+        "question": "How many connections (in the data bus) do we need to transfer 4 bytes of a word at the same time?",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 12,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": 128, "label": "A" },
+          { "text": 256, "label": "B" },
+          { "text": 512, "label": "C" },
+          { "text": 1024, "label": "D" }
+        ],
+        "question": "How many symbols can be represented by a bit pattern with ten bits?",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 13,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": 256, "label": "A" },
+          { "text": 128, "label": "B" },
+          { "text": 64, "label": "C" },
+          { "text": 512, "label": "D" },
+          { "text": "None of the others", "label": "E" }
+        ],
+        "question": "What is the number of bit patterns provided by a 7-bit code?",
+        "image_url": "",
+        "explanation": "Số lượng tổ hợp = 2^n"
+      },
+      {
+        "id": 14,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": 8, "label": "A" },
+          { "text": 16, "label": "B" },
+          { "text": 24, "label": "C" },
+          { "text": 32, "label": "D" }
+        ],
+        "question": "If the memory address space is 16 MB and the word size is 8 bits, then ___ bits are needed to access each word.",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 15,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": 1, "label": "A" },
+          { "text": 2, "label": "B" },
+          { "text": 3, "label": "C" },
+          { "text": 4, "label": "D" },
+          { "text": "None of the others", "label": "E" }
+        ],
+        "question": "In a positional number system with base b, we can always find the number of digits of an integer. So how many bits can we find in the decimal number 20 in hexadecimal system?",
+        "image_url": "",
+        "explanation": "16 MB=16x2^20= 2^4x2^20 = 2^24 byte, log2(2^24)=24"
+      },
+      {
+        "id": 16,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": 1, "label": "A" },
+          { "text": 2, "label": "B" },
+          { "text": 3, "label": "C" },
+          { "text": 4, "label": "D" },
+          { "text": "None of the others", "label": "E" }
+        ],
+        "question": "A group contains ___ bits in the binary system are represented as one digit in the octal system.",
+        "image_url": "",
+        "explanation": "Vì trong hệ bát phân (octal), mỗi chữ số biểu diễn giá trị từ 0 đến 7. Trong hệ nhị phân, cần 3 bit (từ 000 đến 111) để biểu diễn đầy đủ các giá trị này. -> Do đó, 1 chữ số octal tương ứng với 3 bit trong hệ nhị phân."
+      },
+      {
+        "id": 17,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": 1, "label": "A" },
+          { "text": 2, "label": "B" },
+          { "text": 3, "label": "C" },
+          { "text": 4, "label": "D" },
+          { "text": "None of the others", "label": "E" }
+        ],
+        "question": "A group includes ___ bits in the binary system are represented as one digit in the hexadecimal system.",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 18,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": 1, "label": "A" },
+          { "text": 2, "label": "B" },
+          { "text": 3, "label": "C" },
+          { "text": 4, "label": "D" },
+          { "text": "None of the others", "label": "E" }
+        ],
+        "question": "In a positional number system with base b, we can always find the number of digits of an integer. So how many digits can we find in the decimal number 20 in octal system?",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 19,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": 1, "label": "A" },
+          { "text": 2, "label": "B" },
+          { "text": 3, "label": "C" },
+          { "text": 4, "label": "D" },
+          { "text": "None of the others", "label": "E" }
+        ],
+        "question": "In a positional number system with base b, we can always find the number of digits of an integer. So how many digits can we find in the decimal number 20 in hexadecimal system?",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 20,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": 2, "label": "A" },
+          { "text": 3, "label": "B" },
+          { "text": 4, "label": "C" },
+          { "text": 5, "label": "D" }
+        ],
+        "question": "A database management system (DBMS) is a combination of ___ components.",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 21,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": 4, "label": "A" },
+          { "text": 5, "label": "B" },
+          { "text": 6, "label": "C" },
+          { "text": 7, "label": "D" }
+        ],
+        "question": "How many bits that we can find in the decimal number 20 in binary system?",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 22,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": -5, "label": "A" },
+          { "text": -6, "label": "B" },
+          { "text": -7, "label": "C" },
+          { "text": 10, "label": "D" }
+        ],
+        "question": "In two's complement representation with a 4-bit allocation, we get ___ when we add 5 to 5.",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 23,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": 6, "label": "A" },
+          { "text": -6, "label": "B" },
+          { "text": 7, "label": "C" },
+          { "text": -7, "label": "D" }
+        ],
+        "question": "In the sign-and-magnitude representation, the memory location can hold four bits, assume that we have stored integer -6 in a memory location and we then try to subtract 7 to the integer. The computer's response is ___ ?",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 24,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": 4, "label": "A" },
+          { "text": 9, "label": "B" },
+          { "text": 11, "label": "C" },
+          { "text": 20, "label": "D" }
+        ],
+        "question": "Assume memory location that can only hold four bits. What is the result, if we have stored the integer 11 in a memory location and then try to add 9 to the unsigned integer?",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 25,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": 17, "label": "A" },
+          { "text": 16, "label": "B" },
+          { "text": 65535, "label": "C" },
+          { "text": 65536, "label": "D" }
+        ],
+        "question": "Assume a new Excess system uses 17 bits to represent the exponent section. What is the bias value in this system?",
+        "image_url": "",
+        "explanation": "Cách chọn nhanh là số to số lẻ xD"
+      },
+      {
+        "id": 26,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "8088", "label": "A" },
+          { "text": "80286", "label": "B" },
+          { "text": 80386, "label": "C" },
+          { "text": 80486, "label": "D" },
+          { "text": "None of the others", "label": "E" }
+        ],
+        "question": "Which 32-bit microprocessor is used in IBM's PS/2 model-80 computer?",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 27,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": "10 000", "label": "A" },
+          { "text": "20 000", "label": "B" },
+          { "text": "30 000", "label": "C" },
+          { "text": "40 000", "label": "D" }
+        ],
+        "question": "In storing audio, how many samples per second is good enough to reproduce an audio signal?",
+        "image_url": "",
+        "explanation": "Tần số của tai người là từ 20 đến 20.000 Hz. Fsampling >= 2x20,000=40,000 samples/sec"
+      },
+      {
+        "id": 28,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "D8F9", "label": "A" },
+          { "text": "A8B9", "label": "B" },
+          { "text": "AA17", "label": "C" },
+          { "text": "D9F8", "label": "D" },
+          { "text": "None of the others", "label": "E" }
+        ],
+        "question": "Conversion of binary number 1010101000010111 to hexadecimal number is ____",
+        "image_url": "",
+        "explanation": "1010 1010 0001 0111 Đối chiếu với bảng là ra nhé!"
+      },
+      {
+        "id": 29,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": "(1110)nhỏ2", "label": "A" },
+          { "text": "(C)nhỏ16", "label": "B" },
+          { "text": "(15)nhỏ8", "label": "C" },
+          { "text": "None of the others", "label": "D" }
+        ],
+        "question": "Which of the following is equivalent to 12 in decimal?",
+        "image_url": "",
+        "explanation": "Chuyển cái trong (_) ra, cái nào là 12 thì đúng: 1110 là 14, khác 12; B là 12; C là 13"
+      },
+      {
+        "id": 30,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "(111)nhỏ2", "label": "A" },
+          { "text": "(346)nhỏ8", "label": "B" },
+          { "text": "(EEG)nhỏ16", "label": "C" },
+          { "text": 221, "label": "D" }
+        ],
+        "question": "Which of the following representations is erroneous?",
+        "image_url": "",
+        "explanation": "G không tồn tại trong hệ 16"
+      },
+      {
+        "id": 31,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": "(110)nhỏ2", "label": "A" },
+          { "text": "(141)nhỏ8", "label": "B" },
+          { "text": "(EF)nhỏ16", "label": "C" },
+          { "text": "22A", "label": "D" }
+        ],
+        "question": "Which of the following representations is erroneous?",
+        "image_url": "",
+        "explanation": "không có cơ số, nên nếu hiểu là số thập phân thì “A” không hợp lệ"
+      },
+      {
+        "id": 32,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "(11000)nhỏ2", "label": "A" },
+          { "text": "(1A)nhỏ16", "label": "B" },
+          { "text": "(31)nhỏ8", "label": "C" },
+          { "text": "None of the others", "label": "D" }
+        ],
+        "question": "Which of the following is equivalent to 24 in decimal?",
+        "image_url": "",
+        "explanation": "(11000)₂ = 1×16 + 1×8 + 0×4 + 0×2 + 0×1 = 16 + 8 = 24"
+      },
+      {
+        "id": 33,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "Bx2S", "label": "A" },
+          { "text": "2BxS", "label": "B" },
+          { "text": "BxS", "label": "C" },
+          { "text": "B2xB2", "label": "D" }
+        ],
+        "question": "If we call the bit depth or number of bits per sample B, the number of samples per second S, so how to calculate BIT RATE (R)?",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 34,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": "1.010", "label": "A" },
+          { "text": "0.101", "label": "B" },
+          { "text": "1.110", "label": "C" },
+          { "text": "0.110", "label": "D" }
+        ],
+        "question": "Convert the FRACTION decimal number 0.625 to binary.",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 35,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "1001 0001", "label": "A" },
+          { "text": "1001 1010", "label": "B" },
+          { "text": "0100 1010", "label": "C" },
+          { "text": "1010 0001", "label": "D" },
+          { "text": "None of the others", "label": "E" }
+        ],
+        "question": "The ASCII code for the character J is:",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 36,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": "0100 1100", "label": "A" },
+          { "text": "1100 1100", "label": "B" },
+          { "text": "1101 1001", "label": "C" },
+          { "text": "1001 1000", "label": "D" }
+        ],
+        "question": "Use a arithmetic right shift operation on the bit pattern 1001 1000",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 37,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": "1001 1001", "label": "A" },
+          { "text": "1001 1000", "label": "B" },
+          { "text": "0100 1101", "label": "C" },
+          { "text": "0100 1100", "label": "D" }
+        ],
+        "question": "Use a simple right shift operation on the bit pattern 1001 1000.",
+        "image_url": "",
+        "explanation": "Khi right shift 1 bit, ta dịch phải, bit ngoài cùng bên phải bị bỏ đi, và thêm 0 vào bên trái."
+      },
+      {
+        "id": 38,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "0001 1001", "label": "A" },
+          { "text": "0001 1010", "label": "B" },
+          { "text": "0011 0000", "label": "C" },
+          { "text": "0011 0001", "label": "D" }
+        ],
+        "question": "Use a simple left shift operation on the bit pattern 1001 1000",
+        "image_url": "",
+        "explanation": "Ngược lại với dịch phải"
+      },
+      {
+        "id": 39,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "0100 1100", "label": "A" },
+          { "text": "0011 0001", "label": "B" },
+          { "text": "1001 1001", "label": "C" },
+          { "text": "1001 1000", "label": "D" }
+        ],
+        "question": "Use a circular right shift operation on the bit pattern 1001 1000",
+        "image_url": "",
+        "explanation": "circular right shift là dịch về bên phải, số tan cung bên phải chuyển về tận cùng bên trái (như bánh xe)"
+      },
+      {
+        "id": 40,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": "0001 1001", "label": "A" },
+          { "text": "0011 0001", "label": "B" },
+          { "text": "1001 1001", "label": "C" },
+          { "text": "1001 1000", "label": "D" }
+        ],
+        "question": "Use a circular left shift operation on the bit pattern 1001 1000",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 41,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "1011.1011", "label": "A" },
+          { "text": "1101.111", "label": "B" },
+          { "text": "1001.1110", "label": "C" },
+          { "text": "All of the others", "label": "D" },
+          { "text": "None of the others", "label": "E" }
+        ],
+        "question": "The binary equivalent of the Octal number 13.54 is",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 42,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "00011001", "label": "A" },
+          { "text": "00110010", "label": "B" },
+          { "text": "11100111", "label": "C" },
+          { "text": "11110010", "label": "D" }
+        ],
+        "question": "What is the result of storing -25 in an 8-bit memory location using two's complement representation?",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 43,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "5 bits", "label": "A" },
+          { "text": "20 bits", "label": "B" },
+          { "text": "25 bits", "label": "C" },
+          { "text": "32 bits", "label": "D" }
+        ],
+        "question": "A computer has 32 MB (megabytes) of memory. How many bits are needed to address any single byte in memory?",
+        "image_url": "",
+        "explanation": "   "
+      },
+      {
+        "id": 44,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "32-bit", "label": "A" },
+          { "text": "64-bit", "label": "B" },
+          { "text": "128-bit", "label": "C" },
+          { "text": "None of others", "label": "D" }
+        ],
+        "question": "An IPv4 address is a __ address that uniquely and universally defines the connection of a host or a router to the Internet.",
+        "image_url": "",
+        "explanation": "   "
+      }
                 ]
             },
             CEA: {
                 title: "Compliance & Ethics Audit",
                 questions: [
-                    { "id": 1, "question": "How many check bits are needed if the Hamming error correction code is used to detect single bit error in a 128-bit data word?", "options": ["6 bits", "7 bits", "8 bits", "9 bits", "5 bits"], "answer": 2, "explanation": "công thức Trong mã Hamming, với r là số bit kiểm tra. Ta tăng dần r đến khi bất đẳng thức đúng thì đó là số bit cần thiết." },
-                    { "id": 2, "question": "How many check bits are needed for a Hamming error correction code to detect single-error correction in a 1KByte data word?", "options": ["11 bits", "12 bits", "13 bits", "14 bits", "15 bits"], "answer": 3, "explanation": "2^r≥m+r+1. Nếu dữ liệu là 8 bit → cần 4 bit kiểm tra (vì 2^4=16≥8+4+1=13)." },
-                    { "id": 3, "question": "How many bytes of data does each sector in the Winchester hard drive disk have?", "options": ["128 bytes", "256 bytes", "512 bytes", "1024 bytes", "4096 bytes"], "answer": 2, "explanation": "512 là kích thước tiêu chuẩn công nghiệp nhé" },
-                    { "id": 4, "question": "A byte addressable microprocessor has 24 bit address. What is maximum memory capacity?", "options": ["4 MegaByte", "8 MegaByte", "16 MegaByte", "32 MegaByte"], "answer": 2, "explanation": "24 bit địa chỉ là 2^24. Vì hệ thống byte addressable, số địa chỉ hóa tương ứng số byte nên là Chuyển đổi byte sang MB(megabyte) để tìm dung lượng bộ nhớ tối đa: 1 MB=2^20 bytes. => Dung lượng bộ nhớ max = 2^24/2^20 = 16 MB." },
-                    { "id": 5, "question": "What is the maximum addressable memory of a 32-bit microprocessor with 24 bit address?", "options": ["16 GB", "16 MB", "16 Gbits", "16 Mbits"], "answer": 1, "explanation": "Địa chỉ 32 bit → số ô nhớ tối đa là 2^32 byte = 4 GB bộ nhớ địa chỉ được." },
-                    { "id": 6, "question": "Consider a 5 drive, 200 GBytes-per drive RAID array. What is the available data storage capacity for each for the RAID levels 5?", "options": ["200 GBytes", "400 GBytes", "600 GBytes", "800 GBytes", "None of the mentioned"], "answer": 3, "explanation": "(5-1)x200" },
-                    { "id": 7, "question": "Consider a 5 drive, 100 GBytes-per drive RAID array. What is the available data storage capacity for each for the RAID levels 5?", "options": ["400 GBytes", "200 GBytes", "300 GBytes", "500 GBytes "], "answer": 0, "explanation": "(5-1)x100" },
-                    { "id": 8, "question": "In the direct mapping method from 256MB main memory with 512KB cache, what is the number of bits for the TAG element in the address?", "options": ["6", "7", "8", "9"], "answer": 3, "explanation": "256MB / 64KB = 4096 → có 4096 khối bộ nhớ chính ánh xạ đến 1 dòng cache duy nhất." },
-                    { "id": 9, "question": "In error correcting code( single ECC), how many bits are used to correct one bit in 8-bit data?", "options": ["4", "5", "6", "7"], "answer": 0, "explanation": "log2(8) + 1" },
-                    { "id": 10, "question": "Consider an expression: NOT (1111 1010). What is the result of this expression?", "options": ["0000 1010", "0000 0101", "1111 0101", "1111 1010"], "answer": 1, "explanation": "NOT: 0 -> 1, 1 -> 0" },
-                    { "id": 11, "question": "Consider an expression: 1000 0000 OR 1111 1010. What is the result of this expression?", "options": ["1000 0000", "1111 1010", "1001 1010", "1001 0101"], "answer": 1, "explanation": "Phép OR: chỉ cần một bit = 1 là kết quả = 1." },
-                    { "id": 12, "question": "Consider an expression: 1000 0000 AND 1111 1010. What is the result of this expression?", "options": ["1000 0000", "1111 0000", "1001 1010", "1001 0101"], "answer": 0, "explanation": "Phép AND: chỉ khi cả hai bit = 1 mới ra 1." },
-                    { "id": 13, "question": "What is result of 10100101 xor 11001001?", "options": ["11101101", "10000001", "01101100", "10101100"], "answer": 2, "explanation": "Phép XOR: nếu 2 bit khác nhau → 1, giống nhau → 0." },
-                    { "id": 14, "question": "(R1) = 0111 0110, (R2) = 1101 1111, the result of (R1) XOR (R2) is:", "options": ["1101 1011", "0001 0110", "1010 1001", "1100 1101"], "answer": 2, "explanation": "XOR khác → 1, giống → 0." },
-                    { "id": 15, "question": "What is result left rotate of 1011 0101 by 2 bits?", "options": ["0110 1011", "1010 1101", "0110 1101", "1101 0110", "1101 0100"], "answer": 3, "explanation": "Dịch trái 2 bit rồi đưa 2 bit 10 vào cuối" },
-                    { "id": 16, "question": "What is result logical right shift of 1011 0000 by 2 bit?", "options": ["0010 1100", "0101 1000", "0100 1100", "0011 0000"], "answer": 0, "explanation": "Dịch phải logic: điền 0 vào bên trái." },
-                    { "id": 17, "question": "What is the output of Left Shift Operator << on (00011000<<2)?", "options": ["0110 0000", "1100 0000", "0000 0110", "0000 0011"], "answer": 0, "explanation": "Đẩy trái 2 bit: 00 là 011000 và 2 bit 00 được thêm vào đầu bên phải." },
-                    { "id": 18, "question": "Express an integer number +18 (using 8-bits length) in twos complement representation.", "options": ["0001 0010", "1001 0010", "1111 0010", "0111 0010"], "answer": 0, "explanation": "18/2=10010, vì 8-bits nên thêm 3 số 0 ở đầu" },
-                    { "id": 19, "question": "If you have an integer number +18 in sign magnitude representation, which is 0001 0010, what is the correct option for -18?", "options": ["0001 0010", "1001 0010", "1111 0010", "0111 0010"], "answer": 1, "explanation": "Bit đầu là bit dấu (0 = dương), còn lại là trị tuyệt đối." },
-                    { "id": 20, "question": "Convert the 64 from decimal to their binary number equivalents.", "options": ["100000", "100100", "111000", "101010"], "answer": 0, "explanation": "64=2^6 → dạng nhị phân là 1000000." },
-                    { "id": 21, "question": "Using Hamming Code with one error correction to store an 12-bit word in memory, the stored word 111001001101 consists of 8 bits data and 4 bits parity check. What are the parity bits?", "options": ["0110", "0111", "1110", "0101", "None of the mentioned"], "answer": 3, "explanation": "Dùng công thức: 2^r≥m+r+1. Nếu m = 7 → r = 4 là nhỏ nhất thoả mãn (16 ≥ 12)." },
-                    { "id": 22, "question": "For the following Boolean expressions: AB + AB' and the truth table A B B' output: 1 0 1 ?; 1 1 0 ?; 0 0 1 ?; 0 1 0 ? . Choose the correct option to replace at \"?\" (order top to bottom)", "options": ["1,1,1,0", "1,1,1,1", "1,0,1,0", "0,1,1,0", "1,1,0,0"], "answer": 4, "explanation": "CT: AB+AB′=A(B+B′), theo định luật bù: B+B′=1 -> A(B+B′)=A(1)=A" },
-                    { "id": 23, "question": "What is the output of a NOT gate when the input is 0?", "options": ["0", "1", "Undefined", "2"], "answer": 1, "explanation": "1 → 0, 0 → 1. → Kết quả = 0." },
-                    { "id": 24, "question": "When both inputs are 0, what is the result of a NOR gate?", "options": ["0", "1", "2", "Undefined", "#NA"], "answer": 0, "explanation": "Phép AND chỉ ra 1 khi cả hai = 1. → 0 và 0 → 0." },
-                    { "id": 25, "question": "When both inputs are 1, what is the result of a NAND gate?", "options": ["0", "1", "2", "Undefined", "#NA"], "answer": 0, "explanation": "1 AND 1 = 1 → vì cả hai đều đúng." },
-                    { "id": 26, "question": "A set-associative cache consists of 64 lines, divided into four-line sets. 2^19 words main memory contains 4K blocks of 128 words each. How many bits are there in the tag field of the cache?", "options": ["5", "6", "7", "8", "9"], "answer": 3, "explanation": "Số set = 64 / 4 = 16 set." },
-                    { "id": 27, "question": "Consider a machine with a byte addressable main memory of 2^16 bytes and block size of 8 bytes. Assume that a direct mapped cache consisting of 32 lines is used with this machine. How many bits are there in the line field of the cache?", "options": ["3", "4", "5", "6", "7"], "answer": 1, "explanation": "Vì 2^20=1MB2^{20} = 1MB220=1MB, cần 20 bit địa chỉ." },
-                    { "id": 28, "question": "The instruction, which adds 1 to the value in a memory location, has five stages: fetch opcode (four cycles), fetch operand address (three cycles), fetch operand (three cycles), add 1 to operand (three cycles), and store operand (three cycles). An interrupt sends request at beginning of fetch operand stage. How many cycles does the processor enter the interrupt processing cycle?", "options": ["6", "7", "8", "9", "10"], "answer": 4, "explanation": "Lệnh INC (increment) dùng để cộng 1 vào thanh ghi." },
-                    { "id": 29, "question": "The instruction, which adds 1 to the value in a memory location, has five stages: fetch opcode (2 bus cycles), fetch operand address (2 bus cycles), fetch operand (2 bus cycles), add 1 to operand (1 bus cycle), and store operand (3 bus cycles). An interrupt sends request at beginning of fetch operand address stage. How many cycles does the processor enter the interrupt processing cycle?", "options": ["6", "7", "8", "9", "5"], "answer": 2, "explanation": "Tương tự — INC là lệnh tăng 1 đơn vị cho giá trị trong thanh ghi." },
-                    { "id": 30, "question": "In the concept of Register Windows, how many register groups are there?", "options": ["4", "3", "2", "No distinction"], "answer": 0, "explanation": "4 nhóm chính: Global Registers, Input Registers, Local Registers, Output registers" },
-                    { "id": 31, "question": "How many common classifications of parallel systems are there as proposed by Flynn?", "options": ["2", "3", "4", "5"], "answer": 2, "explanation": "SISD (Single Instruction, Single Data): Một luồng lệnh và một luồng dữ liệu.\nSIMD (Single Instruction, Multiple Data): Một luồng lệnh nhưng nhiều luồng dữ liệu.\nMISD (Multiple Instruction, Single Data): Nhiều luồng lệnh nhưng một luồng dữ liệu.\nMIMD (Multiple Instruction, Multiple Data): Nhiều luồng lệnh và nhiều luồng dữ liệu." },
-                    { "id": 32, "question": "How many general-purpose registers are there in the Microprocessor Register Organizations of Intel 80386-Pentinum 4?", "options": ["8", "16", "4", "12"], "answer": 0, "explanation": "8085 có 6 thanh ghi đa dụng (B, C, D, E, H, L), mỗi cái 8 bit." },
-                    { "id": 33, "question": "If you have a boolean function with 3 variables, how many rows are there in the truth table?", "options": ["8 rows", "3 rows", "6 rows", "12 rows"], "answer": 0, "explanation": "Tốc độ CPU phụ thuộc vào tần số xung nhịp (clock speed), độ dài đường ống lệnh (pipeline), và hiệu quả bộ nhớ cache. Tần số cao, pipeline sâu, cache lớn → CPU chạy nhanh hơn." },
-                    { "id": 34, "question": "Follow the Amdahl's law for multiprocessors, if only 10% of the code is inherently serial (f = 0.9), running the program on a multicore system with 4 processors, a performance gain (speedup factor) would be _____.", "options": ["307%", "297%", "317%", "327%"], "answer": 0, "explanation": "1/((1-f)+(f/n)=1/((1-0,9)+(0,9/4)=3,08 = 308 khoảng 307%" },
-                    { "id": 35, "question": "Follow the Amdahl's law for multiprocessors, if only 20% of the code is inherently serial (f = 0.8), running the program on a multicore system with 8 processors, a performance gain (speedup factor) would be ____.", "options": ["333%", "303%", "313%", "323%"], "answer": 1, "explanation": "Tavg=h×Tcache+(1−h)×(Tcache+Tmain)= 0.9×10 + 0.1×(10+100) = 19ns. → Hiểu nôm na: 90% truy cập nhanh, 10% phải “vòng xuống RAM”." },
-                    { "id": 36, "question": "A benchmark program is running on a 400 MHz processor. The executed program consists of 500 instruction executions, with the following instruction mix and clock cycle count in Table below:\nInstruction type Instruction count Cycles per Instruction\nArithmetic 300 1\nData transfer 100 2\nControl transfer 100 2\nCalculate MIPS rate for this case.", "options": ["MIPS rate = 285.7", "MIPS rate = 275.7", "MIPS rate = 265.7", "MIPS rate = 295.7"], "answer": 0, "explanation": "Tổng số chu kỳ += instruction x Cycles per = 700\nThời gian thực thi = chu kỳ/ tần số(400x10^6)\nMIPS rate= tổng số lệnh(500)/ thời gian thực thi" },
-                    { "id": 37, "question": "In one-cache system using direct mapping technique, with the cache containing 10 lines, which memory block's data can be transfered to the cache line 7?", "options": ["7, 17, 27, 37, …", "0, 1, 2, 3, 4, 5, 6, 7, …", "0,7, 17, 27, 37, …", "0, 7, 77, 777, …"], "answer": 0, "explanation": "Cache line = (Block address) mod (Number of cache lines)" },
-                    { "id": 38, "question": "A two-way set-associative cache has lines of 16 bytes and a total size of 8 Kbytes. The 64-Mbyte main memory is byte addressable. What are the values of Tag, Set and Byte offset fields?", "options": ["14/8/4", "16/6/4", "12/10/4", "15/7/4", "13/9/4"], "answer": 0, "explanation": "Mỗi khi CPU đọc 1 lệnh, PC tăng theo số byte của lệnh. → 2000H + 3 = 2003H." },
-                    { "id": 39, "question": "The use of Hamming code on 4-bit words (M = 4) is illustrated in the below Venn diagrams. With three intersecting circles, there are seven compartments. We assign the 4 data bits to the inner compartments. The remaining compartments are filled with what are called parity bits. Each parity bit is chosen so that the total number of 1s in its circle is even. Choose the correct value of the corresponding parity bit in circles A, B, C.", "options": ["1;0;0", "0;1;0", "0;0;1", "1;0;1"], "answer": 0, "explanation": "ALU là khối tính toán trung tâm, thực hiện các phép toán số học (cộng, trừ, nhân, chia) và logic (AND, OR, XOR…)." },
-                    { "id": 40, "question": "Simplify the following Boolean expression: AB + A'B' + AB'", "options": ["A + B'", "A' + B'", "A + B", "A' + B"], "answer": 0, "explanation": "Đó là Accumulator (thanh ghi tích lũy) – nơi chứa kết quả tạm thời trong quá trình thực hiện phép toán." },
-                    { "id": 41, "question": "Which of the following Boolean expressions is equivalent to F = (A + B')(C' + A + B)", "options": ["F = A + B'C'", "F = A' + BC", "F = A + BC", "F = A' + B'C'"], "answer": 0, "explanation": "Pipeline hoạt động nối tiếp → chỉ nhanh bằng giai đoạn chậm nhất. → Giai đoạn chậm làm nghẽn cổ chai, giảm hiệu năng toàn hệ thống." },
-                    { "id": 42, "question": "Which of the following Boolean expressions is equivalent to F = BC + A'B'C?", "options": ["F = A'C + BC", "F = AC + BC", "F = AC + B'C", "F = A'C + B'C"], "answer": 0, "explanation": "Cache lưu tạm dữ liệu thường dùng, giúp CPU truy cập nhanh hơn mà không cần xuống RAM.\n→ Giảm thời gian truy xuất, tăng tốc xử lý." },
-                    { "id": 43, "question": "Convert the following SOP expression to an equivalent POS expression: ABC' + A'B'C + AB'C'", "options": ["(A + B + C')(A' + B' + C)(A'+ B' + C')(A+ B'+ C)(A+ B' + C')", "(A + B + C)(A + B' + C)(A' + B' + C')(A + B + C')(A' + B' + C')", "(A + B + C)(A + B' + C')(A' + B' + C)(A + B' + C')(A + B' + C)", "(A' + B + C')(A'+ B' + C)(A + B' + C)(A + B' + C')(A' + B' + C)"], "answer": 1, "explanation": "ROM là bộ nhớ chỉ đọc (Read Only) – dữ liệu không mất khi tắt máy. RAM là bộ nhớ tạm, mất dữ liệu khi mất điện." },
-                    { "id": 44, "question": "Convert the following SOP expression to an equivalent POS expression: ABC + A'BC' + AB'C + A'B'C", "options": ["(A + B + C)(A + B' + C)(A'+ B + C')(A' + B' + C)", "(A + B + C')(A + B' + C)(A' + B + C)(A' + B' + C)", "(A + B + C)(A + B' + C')(A' + B +C)(A'+ B' + C)", "(A' + B + C')(A' + B' + C)(A + B' + C)(A + B + C')"], "answer": 2, "explanation": "BIOS nằm trong ROM (hoặc flash ROM). → Vì ROM giữ dữ liệu ngay cả khi tắt nguồn." },
-                    { "id": 45, "question": "From Karnaugh maps below. Derive a simplify Boolean expression", "options": ["F(A,B,C,D) = A'B+CD+BD+B'C'D", "F(A,B,C,D) = A'B+C'D+BD+B'C'D", "F(A,B,C,D) = A'B+CD+BD+B'C'D'", "F(A,B,C,D) = A'B+CD+BD+B'C'D"], "answer": 2, "explanation": "Block lớn → tăng khả năng trúng (hit), nhưng tốn băng thông và dễ gây lãng phí dữ liệu không cần thiết. → Cần cân bằng giữa tốc độ và hiệu quả bộ nhớ." },
-                    { "id": 46, "question": "Write the Boolean expression for each of the logic circuits.", "options": ["F = A'B'D' + AC'D + ABD", "F = A'B'D + AC'D + ABD", "F = A'B'D + AC'D' + ABD", "F = A'B'D + A'C'D + ABD"], "answer": 2, "explanation": "Virtual memory cho phép chạy chương trình lớn hơn dung lượng RAM thực tế bằng cách hoán đổi dữ liệu giữa RAM và ổ đĩa. → Giúp máy tính chạy đa nhiệm mượt mà, dù RAM nhỏ." }
+                          {
+        "id": 1,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "6 bits", "label": "A" },
+          { "text": "7 bits", "label": "B" },
+          { "text": "8 bits", "label": "C" },
+          { "text": "9 bits", "label": "D" },
+          { "text": "5 bits", "label": "E" }
+        ],
+        "question": "How many check bits are needed if the Hamming error correction code is used to detect single bit error in a 128-bit data word?",
+        "image_url": "",
+        "explanation": "công thức Trong mã Hamming, với r là số bit kiểm tra. Ta tăng dần r đến khi bất đẳng thức đúng thì đó là số bit cần thiết."
+      },
+      {
+        "id": 2,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": "11 bits", "label": "A" },
+          { "text": "12 bits", "label": "B" },
+          { "text": "13 bits", "label": "C" },
+          { "text": "14 bits", "label": "D" },
+          { "text": "15 bits", "label": "E" }
+        ],
+        "question": "How many check bits are needed for a Hamming error correction code to detect single-error correction in a 1KByte data word?",
+        "image_url": "",
+        "explanation": "2^r≥m+r+1. Nếu dữ liệu là 8 bit → cần 4 bit kiểm tra (vì 2^4=16≥8+4+1=13)."
+      },
+      {
+        "id": 3,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "128 bytes", "label": "A" },
+          { "text": "256 bytes", "label": "B" },
+          { "text": "512 bytes", "label": "C" },
+          { "text": "1024 bytes", "label": "D" },
+          { "text": "4096 bytes", "label": "E" }
+        ],
+        "question": "How many bytes of data does each sector in the Winchester hard drive disk have?",
+        "image_url": "",
+        "explanation": "   512 là kích thước tiêu chuẩn công nghiệp nhé"
+      },
+      {
+        "id": 4,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "4 MegaByte", "label": "A" },
+          { "text": "8 MegaByte", "label": "B" },
+          { "text": "16 MegaByte", "label": "C" },
+          { "text": "32 MegaByte", "label": "D" }
+        ],
+        "question": "A byte addressable microprocessor has 24 bit address. What is maximum memory capacity?\r\n",
+        "image_url": "",
+        "explanation": "24 bit địa chỉ là 2^24. Vì hệ thống byte addressable, số địa chỉ hóa tương ứng số byte nên là Chuyển đổi byte sang MB(megabyte) để tìm dung lượng bộ nhớ tối đa: 1 MB=2^20 bytes. => Dung lượng bộ nhớ max = 2^24/2^20 = 16 MB."
+      },
+      {
+        "id": 5,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": "16 GB", "label": "A" },
+          { "text": "16 MB", "label": "B" },
+          { "text": "16 Gbits", "label": "C" },
+          { "text": "16 Mbits", "label": "D" }
+        ],
+        "question": "What is the maximum addressable memory of a 32-bit microprocessor with 24 bit address?",
+        "image_url": "",
+        "explanation": "Địa chỉ 32 bit → số ô nhớ tối đa là 2^32 byte = 4 GB bộ nhớ địa chỉ được."
+      },
+      {
+        "id": 6,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": "200 GBytes", "label": "A" },
+          { "text": "400 GBytes", "label": "B" },
+          { "text": "600 GBytes", "label": "C" },
+          { "text": "800 GBytes", "label": "D" },
+          { "text": "None of the mentioned", "label": "E" }
+        ],
+        "question": "Consider a 5 drive, 200 GBytes-per drive RAID array. What is the available data storage capacity for each for the RAID levels 5?\r\n",
+        "image_url": "",
+        "explanation": "   (5-1)x200"
+      },
+      {
+        "id": 7,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "400 GBytes", "label": "A" },
+          { "text": "200 GBytes", "label": "B" },
+          { "text": "300 GBytes", "label": "C" },
+          { "text": "500 GBytes ", "label": "D" }
+        ],
+        "question": "Consider a 5 drive, 100 GBytes-per drive RAID array. What is the available data storage capacity for each for the RAID levels 5?",
+        "image_url": "",
+        "explanation": "   (5-1)x100"
+      },
+      {
+        "id": 8,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": 6, "label": "A" },
+          { "text": 7, "label": "B" },
+          { "text": 8, "label": "C" },
+          { "text": 9, "label": "D" }
+        ],
+        "question": "In the direct mapping method from 256MB main memory with 512KB cache, what is the number of bits for the TAG element in the address?",
+        "image_url": "",
+        "explanation": "256MB / 64KB = 4096 → có 4096 khối bộ nhớ chính ánh xạ đến 1 dòng cache duy nhất."
+      },
+      {
+        "id": 9,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": 4, "label": "A" },
+          { "text": 5, "label": "B" },
+          { "text": 6, "label": "C" },
+          { "text": 7, "label": "D" }
+        ],
+        "question": "In error correcting code( single ECC), how many bits are used to correct one bit in 8-bit data?",
+        "image_url": "",
+        "explanation": "log2(8) + 1"
+      },
+      {
+        "id": 10,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": "0000 1010", "label": "A" },
+          { "text": "0000 0101", "label": "B" },
+          { "text": "1111 0101", "label": "C" },
+          { "text": "1111 1010", "label": "D" }
+        ],
+        "question": "Consider an expression: NOT (1111 1010). What is the result of this expression?",
+        "image_url": "",
+        "explanation": "   NOT: 0 -> 1, 1 -> 0"
+      },
+      {
+        "id": 11,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": "1000 0000", "label": "A" },
+          { "text": "1111 1010", "label": "B" },
+          { "text": "1001 1010", "label": "C" },
+          { "text": "1001 0101", "label": "D" }
+        ],
+        "question": "Consider an expression: 1000 0000 OR 1111 1010. What is the result of this expression?",
+        "image_url": "",
+        "explanation": "Phép OR: chỉ cần một bit = 1 là kết quả = 1."
+      },
+      {
+        "id": 12,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "1000 0000", "label": "A" },
+          { "text": "1111 0000", "label": "B" },
+          { "text": "1001 1010", "label": "C" },
+          { "text": "1001 0101", "label": "D" }
+        ],
+        "question": "Consider an expression: 1000 0000 AND 1111 1010. What is the result of this expression?",
+        "image_url": "",
+        "explanation": "Phép AND: chỉ khi cả hai bit = 1 mới ra 1."
+      },
+      {
+        "id": 13,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "11101101", "label": "A" },
+          { "text": "10000001", "label": "B" },
+          { "text": "01101100", "label": "C" },
+          { "text": "10101100", "label": "D" }
+        ],
+        "question": "What is result of 10100101 xor 11001001?",
+        "image_url": "",
+        "explanation": "Phép XOR: nếu 2 bit khác nhau → 1, giống nhau → 0."
+      },
+      {
+        "id": 14,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "1101 1011", "label": "A" },
+          { "text": "0001 0110", "label": "B" },
+          { "text": "1010 1001", "label": "C" },
+          { "text": "1100 1101", "label": "D" }
+        ],
+        "question": "(R1) = 0111 0110, (R2) = 1101 1111, the result of (R1) XOR (R2) is:",
+        "image_url": "",
+        "explanation": "XOR khác → 1, giống → 0."
+      },
+      {
+        "id": 15,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": "0110 1011", "label": "A" },
+          { "text": "1010 1101", "label": "B" },
+          { "text": "0110 1101", "label": "C" },
+          { "text": "1101 0110", "label": "D" },
+          { "text": "1101 0100", "label": "E" }
+        ],
+        "question": "What is result left rotate of 1011 0101 by 2 bits?",
+        "image_url": "",
+        "explanation": "Dịch trái 2 bit rồi đưa 2 bit 10 vào cuối"
+      },
+      {
+        "id": 16,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "0010 1100", "label": "A" },
+          { "text": "0101 1000", "label": "B" },
+          { "text": "0100 1100", "label": "C" },
+          { "text": "0011 0000", "label": "D" }
+        ],
+        "question": "What is result logical right shift of 1011 0000 by 2 bit?",
+        "image_url": "",
+        "explanation": "Dịch phải logic: điền 0 vào bên trái."
+      },
+      {
+        "id": 17,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "0110 0000", "label": "A" },
+          { "text": "1100 0000", "label": "B" },
+          { "text": "0000 0110", "label": "C" },
+          { "text": "0000 0011", "label": "D" }
+        ],
+        "question": "What is the output of Left Shift Operator << on (00011000<<2)?",
+        "image_url": "",
+        "explanation": "Đẩy trái 2 bit: 00 là 011000 và 2 bit 00 được thêm vào đầu bên phải."
+      },
+      {
+        "id": 18,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "0001 0010", "label": "A" },
+          { "text": "1001 0010", "label": "B" },
+          { "text": "0000 1101", "label": "C" },
+          { "text": "1001 1101", "label": "D" }
+        ],
+        "question": "Express an integer number +18 (using 8-bits length) in twos complement representation.",
+        "image_url": "",
+        "explanation": "18/2=10010, vì 8-bits nên thêm 3 số 0 ở đầu"
+      },
+      {
+        "id": 19,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": "0001 0010", "label": "A" },
+          { "text": "1001 0010", "label": "B" },
+          { "text": "1111 0010", "label": "C" },
+          { "text": "0111 0010", "label": "D" }
+        ],
+        "question": "If you have an integer number +18 in sign magnitude representation, which is 0001 0010, what is the correct option for -18?",
+        "image_url": "",
+        "explanation": "Bit đầu là bit dấu (0 = dương), còn lại là trị tuyệt đối."
+      },
+      {
+        "id": 20,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "100000", "label": "A" },
+          { "text": "100100", "label": "B" },
+          { "text": "111000", "label": "C" },
+          { "text": "101010", "label": "D" }
+        ],
+        "question": "Convert the 64 from decimal to their binary number equivalents.",
+        "image_url": "",
+        "explanation": "64=2^6 → dạng nhị phân là 1000000."
+      },
+      {
+        "id": 21,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": "0110", "label": "A" },
+          { "text": "0111", "label": "B" },
+          { "text": "1110", "label": "C" },
+          { "text": "0101", "label": "D" },
+          { "text": "None of the mentioned", "label": "E" }
+        ],
+        "question": "Using Hamming Code with one error correction to store an 12-bit word in memory, the stored word 111001001101 consists of 8 bits data and 4 bits parity check. What are the parity bits?",
+        "image_url": "",
+        "explanation": "Dùng công thức: 2^r≥m+r+1. Nếu m = 7 → r = 4 là nhỏ nhất thoả mãn (16 ≥ 12)."
+      },
+      {
+        "id": 22,
+        "type": "single",
+        "points": 1,
+        "correct": ["E"],
+        "options": [
+          { "text": "1,1,1,0", "label": "A" },
+          { "text": "1,1,1,1", "label": "B" },
+          { "text": "1,0,1,0", "label": "C" },
+          { "text": "0,1,1,0", "label": "D" },
+          { "text": "1,1,0,0", "label": "E" }
+        ],
+        "question": "For the following Boolean expressions: AB + AB' and the truth table A B B' output: 1 0 1 ?; 1 1 0 ?; 0 0 1 ?; 0 1 0 ? . Choose the correct option to replace at \"?\" (order top to bottom)",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-10-29%20224917.png",
+        "explanation": "CT: AB+AB′=A(B+B′), theo định luật bù: B+B′=1 -> A(B+B′)=A(1)=A"
+      },
+      {
+        "id": 23,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": "0", "label": "A" },
+          { "text": 1, "label": "B" },
+          { "text": "Undefined", "label": "C" },
+          { "text": 2, "label": "D" }
+        ],
+        "question": "What is the output of a NOT gate when the input is 0?",
+        "image_url": "",
+        "explanation": "1 → 0, 0 → 1. → Kết quả = 0."
+      },
+      {
+        "id": 24,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": "0", "label": "A" },
+          { "text": 1, "label": "B" },
+          { "text": 2, "label": "C" },
+          { "text": "Undefined", "label": "D" },
+          { "text": "#NA", "label": "E" }
+        ],
+        "question": "When both inputs are 0, what is the result of a NOR gate?",
+        "image_url": "",
+        "explanation": "Phép AND chỉ ra 1 khi cả hai = 1. → 0 và 0 → 0."
+      },
+      {
+        "id": 25,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "0", "label": "A" },
+          { "text": 1, "label": "B" },
+          { "text": 2, "label": "C" },
+          { "text": "Undefined", "label": "D" },
+          { "text": "#NA", "label": "E" }
+        ],
+        "question": "When both inputs are 1, what is the result of a NAND gate?",
+        "image_url": "",
+        "explanation": "1 AND 1 = 1 → vì cả hai đều đúng."
+      },
+      {
+        "id": 26,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": 5, "label": "A" },
+          { "text": 6, "label": "B" },
+          { "text": 7, "label": "C" },
+          { "text": 8, "label": "D" },
+          { "text": 9, "label": "E" }
+        ],
+        "question": "A set-associative cache consists of 64 lines, divided into four-line sets. 2^19 words main memory contains 4K blocks of 128 words each. How many bits are there in the tag field of the cache?",
+        "image_url": "",
+        "explanation": "Số set = 64 / 4 = 16 set."
+      },
+      {
+        "id": 27,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": 3, "label": "A" },
+          { "text": 4, "label": "B" },
+          { "text": 5, "label": "C" },
+          { "text": 6, "label": "D" },
+          { "text": 7, "label": "E" }
+        ],
+        "question": "Consider a machine with a byte addressable main memory of 2^16 bytes and block size of 8 bytes. Assume that a direct mapped cache consisting of 32 lines is used with this machine. How many bits are there in the line field of the cache?",
+        "image_url": "",
+        "explanation": "Vì 2^20=1MB2^{20} = 1MB220=1MB, cần 20 bit địa chỉ."
+      },
+      {
+        "id": 28,
+        "type": "single",
+        "points": 1,
+        "correct": ["E"],
+        "options": [
+          { "text": 6, "label": "A" },
+          { "text": 7, "label": "B" },
+          { "text": 8, "label": "C" },
+          { "text": 9, "label": "D" },
+          { "text": 10, "label": "E" }
+        ],
+        "question": "The instruction, which adds 1 to the value in a memory location, has five stages: fetch opcode (four cycles), fetch operand address (three cycles), fetch operand (three cycles), add 1 to operand (three cycles), and store operand (three cycles). An interrupt sends request at beginning of fetch operand stage. How many cycles does the processor enter the interrupt processing cycle?",
+        "image_url": "",
+        "explanation": "Lệnh INC (increment) dùng để cộng 1 vào thanh ghi."
+      },
+      {
+        "id": 29,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": 6, "label": "A" },
+          { "text": 7, "label": "B" },
+          { "text": 8, "label": "C" },
+          { "text": 9, "label": "D" },
+          { "text": 5, "label": "E" }
+        ],
+        "question": "The instruction, which adds 1 to the value in a memory location, has five stages: fetch opcode (2 bus cycles), fetch operand address (2 bus cycles), fetch operand (2 bus cycles), add 1 to operand (1 bus cycle), and store operand (3 bus cycles). An interrupt sends request at beginning of fetch operand address stage. How many cycles does the processor enter the interrupt processing cycle?",
+        "image_url": "",
+        "explanation": "Tương tự — INC là lệnh tăng 1 đơn vị cho giá trị trong thanh ghi."
+      },
+      {
+        "id": 30,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": 4, "label": "A" },
+          { "text": 3, "label": "B" },
+          { "text": 2, "label": "C" },
+          { "text": "No distinction", "label": "D" }
+        ],
+        "question": "In the concept of Register Windows, how many register groups are there?",
+        "image_url": "",
+        "explanation": "4 nhóm chính: Global Registers, Input Registers, Local Registers, Output registers"
+      },
+      {
+        "id": 31,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": 2, "label": "A" },
+          { "text": 3, "label": "B" },
+          { "text": 4, "label": "C" },
+          { "text": 5, "label": "D" }
+        ],
+        "question": "How many common classifications of parallel systems are there as proposed by Flynn?",
+        "image_url": "",
+        "explanation": "SISD (Single Instruction, Single Data): Một luồng lệnh và một luồng dữ liệu.\r\nSIMD (Single Instruction, Multiple Data): Một luồng lệnh nhưng nhiều luồng dữ liệu.\r\nMISD (Multiple Instruction, Single Data): Nhiều luồng lệnh nhưng một luồng dữ liệu.\r\nMIMD (Multiple Instruction, Multiple Data): Nhiều luồng lệnh và nhiều luồng dữ liệu."
+      },
+      {
+        "id": 32,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": 8, "label": "A" },
+          { "text": 16, "label": "B" },
+          { "text": 4, "label": "C" },
+          { "text": 12, "label": "D" }
+        ],
+        "question": "How many general-purpose registers are there in the Microprocessor Register Organizations of Intel 80386-Pentinum 4?",
+        "image_url": "",
+        "explanation": "8085 có 6 thanh ghi đa dụng (B, C, D, E, H, L), mỗi cái 8 bit."
+      },
+      {
+        "id": 33,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "8 rows", "label": "A" },
+          { "text": "3 rows", "label": "B" },
+          { "text": "6 rows", "label": "C" },
+          { "text": "12 rows", "label": "D" }
+        ],
+        "question": "If you have a boolean function with 3 variables, how many rows are there in the truth table?",
+        "image_url": "",
+        "explanation": "Tốc độ CPU phụ thuộc vào tần số xung nhịp (clock speed), độ dài đường ống lệnh (pipeline), và hiệu quả bộ nhớ cache. Tần số cao, pipeline sâu, cache lớn → CPU chạy nhanh hơn."
+      },
+      {
+        "id": 34,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "307%", "label": "A" },
+          { "text": "297%", "label": "B" },
+          { "text": "317%", "label": "C" },
+          { "text": "327%", "label": "D" }
+        ],
+        "question": "Follow the Amdahl's law for multiprocessors, if only 10% of the code is inherently serial (f = 0.9), running the program on a multicore system with 4 processors, a performance gain (speedup factor) would be _____.",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-10-29%20224438.png",
+        "explanation": "1/((1-f)+(f/n)=1/((1-0,9)+(0,9/4)=3,08 = 308 khoảng 307%"
+      },
+      {
+        "id": 35,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "333%", "label": "A" },
+          { "text": "303%", "label": "B" },
+          { "text": "313%", "label": "C" },
+          { "text": "323%", "label": "D" }
+        ],
+        "question": "Follow the Amdahl's law for multiprocessors, if only 20% of the code is inherently serial (f = 0.8), running the program on a multicore system with 8 processors, a performance gain (speedup factor) would be ____.",
+        "image_url": "",
+        "explanation": "Tavg=h×Tcache+(1−h)×(Tcache+Tmain)= 0.9×10 + 0.1×(10+100) = 19ns. → Hiểu nôm na: 90% truy cập nhanh, 10% phải “vòng xuống RAM”."
+      },
+      {
+        "id": 36,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "MIPS rate = 285.7", "label": "A" },
+          { "text": "MIPS rate = 275.7", "label": "B" },
+          { "text": "MIPS rate = 265.7", "label": "C" },
+          { "text": "MIPS rate = 295.7", "label": "D" }
+        ],
+        "question": "A benchmark program is running on a 400 MHz processor. The executed program consists of 500 instruction executions, with the following instruction mix and clock cycle count in Table below:\r\nInstruction type Instruction count Cycles per Instruction\r\nArithmetic 300 1\r\nData transfer 100 2\r\nControl transfer 100 2\r\nCalculate MIPS rate for this case.",
+        "image_url": "",
+        "explanation": "Tổng số chu kỳ += instruction x Cycles per = 700\r\nThời gian thực thi = chu kỳ/ tần số(400x10^6)\r\nMIPS rate= tổng số lệnh(500)/ thời gian thực thi"
+      },
+      {
+        "id": 37,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "7, 17, 27, 37, …", "label": "A" },
+          { "text": "0, 1, 2, 3, 4, 5, 6, 7, …", "label": "B" },
+          { "text": "0,7, 17, 27, 37, …", "label": "C" },
+          { "text": "0, 7, 77, 777, …", "label": "D" }
+        ],
+        "question": "In one-cache system using direct mapping technique, with the cache containing 10 lines, which memory block's data can be transfered to the cache line 7?",
+        "image_url": "",
+        "explanation": "Cache line = (Block address) mod (Number of cache lines)"
+      },
+      {
+        "id": 38,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "14/8/4", "label": "A" },
+          { "text": "16/6/4", "label": "B" },
+          { "text": "12/10/4", "label": "C" },
+          { "text": "15/7/4", "label": "D" },
+          { "text": "13/9/4", "label": "E" }
+        ],
+        "question": "A two-way set-associative cache has lines of 16 bytes and a total size of 8 Kbytes. The 64-Mbyte main memory is byte addressable. What are the values of Tag, Set and Byte offset fields?",
+        "image_url": "",
+        "explanation": "Mỗi khi CPU đọc 1 lệnh, PC tăng theo số byte của lệnh. → 2000H + 3 = 2003H."
+      },
+      {
+        "id": 39,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "1;0;0", "label": "A" },
+          { "text": "0;1;0", "label": "B" },
+          { "text": "0;0;1", "label": "C" },
+          { "text": "1;0;1", "label": "D" }
+        ],
+        "question": "The use of Hamming code on 4-bit words (M = 4) is illustrated in the below Venn diagrams. With three intersecting circles, there are seven compartments. We assign the 4 data bits to the inner compartments. The remaining compartments are filled with what are called parity bits. Each parity bit is chosen so that the total number of 1s in its circle is even. Choose the correct value of the corresponding parity bit in circles A, B, C.",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-10-29%20225512.png",
+        "explanation": "ALU là khối tính toán trung tâm, thực hiện các phép toán số học (cộng, trừ, nhân, chia) và logic (AND, OR, XOR…)."
+      },
+      {
+        "id": 40,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "A + B'", "label": "A" },
+          { "text": "A' + B'", "label": "B" },
+          { "text": "A + B", "label": "C" },
+          { "text": "A' + B", "label": "D" }
+        ],
+        "question": "Simplify the following Boolean expression: AB + A'B' + AB'",
+        "image_url": "",
+        "explanation": "Đó là Accumulator (thanh ghi tích lũy) – nơi chứa kết quả tạm thời trong quá trình thực hiện phép toán."
+      },
+      {
+        "id": 41,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "F = A + B'C'", "label": "A" },
+          { "text": "F = A' + BC", "label": "B" },
+          { "text": "F = A + BC", "label": "C" },
+          { "text": "F = A' + B'C'", "label": "D" }
+        ],
+        "question": "Which of the following Boolean expressions is equivalent to F = (A + B')(C' + A + B)",
+        "image_url": "",
+        "explanation": "Pipeline hoạt động nối tiếp → chỉ nhanh bằng giai đoạn chậm nhất. → Giai đoạn chậm làm nghẽn cổ chai, giảm hiệu năng toàn hệ thống."
+      },
+      {
+        "id": 42,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "F = A'C + BC", "label": "A" },
+          { "text": "F = AC + BC", "label": "B" },
+          { "text": "F = AC + B'C", "label": "C" },
+          { "text": "F = A'C + B'C", "label": "D" }
+        ],
+        "question": "Which of the following Boolean expressions is equivalent to F = BC + A'B'C?",
+        "image_url": "",
+        "explanation": "Cache lưu tạm dữ liệu thường dùng, giúp CPU truy cập nhanh hơn mà không cần xuống RAM.\r\n→ Giảm thời gian truy xuất, tăng tốc xử lý."
+      },
+      {
+        "id": 43,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          {
+            "text": "(A + B + C')(A' + B' + C)(A'+ B' + C')(A+ B'+ C)(A+ B' + C')",
+            "label": "A"
+          },
+          {
+            "text": "(A + B + C)(A + B' + C)(A' + B' + C')(A + B + C')(A' + B' + C')",
+            "label": "B"
+          },
+          {
+            "text": "(A + B + C)(A + B' + C')(A' + B' + C)(A + B' + C')(A + B' + C)",
+            "label": "C"
+          },
+          {
+            "text": "(A' + B + C')(A'+ B' + C)(A + B' + C)(A + B' + C')(A' + B' + C)",
+            "label": "D"
+          }
+        ],
+        "question": "Convert the following SOP expression to an equivalent POS expression: ABC' + A'B'C + AB'C'",
+        "image_url": "",
+        "explanation": "ROM là bộ nhớ chỉ đọc (Read Only) – dữ liệu không mất khi tắt máy. RAM là bộ nhớ tạm, mất dữ liệu khi mất điện."
+      },
+      {
+        "id": 44,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          {
+            "text": "(A + B + C)(A + B' + C)(A'+ B + C')(A' + B' + C)",
+            "label": "A"
+          },
+          {
+            "text": "(A + B + C')(A + B' + C)(A' + B + C)(A' + B' + C)",
+            "label": "B"
+          },
+          {
+            "text": "(A + B + C)(A + B' + C')(A' + B +C)(A'+ B' + C)",
+            "label": "C"
+          },
+          {
+            "text": "(A' + B + C')(A' + B' + C)(A + B' + C)(A + B + C')",
+            "label": "D"
+          }
+        ],
+        "question": "Convert the following SOP expression to an equivalent POS expression: ABC + A'BC' + AB'C + A'B'C",
+        "image_url": "",
+        "explanation": "BIOS nằm trong ROM (hoặc flash ROM). → Vì ROM giữ dữ liệu ngay cả khi tắt nguồn."
+      },
+      {
+        "id": 45,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "F(A,B,C,D) = A'B+CD+BD+B'C'D", "label": "A" },
+          { "text": "F(A,B,C,D) = A'B+C'D+BD+B'C'D", "label": "B" },
+          { "text": "F(A,B,C,D) = A'B+CD+BD+B'C'D'", "label": "C" },
+          { "text": "F(A,B,C,D) = A'B+CD+BD+B'C'D", "label": "D" }
+        ],
+        "question": "From Karnaugh maps below. Derive a simplify Boolean expression",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-10-29%20230115.png",
+        "explanation": "Block lớn → tăng khả năng trúng (hit), nhưng tốn băng thông và dễ gây lãng phí dữ liệu không cần thiết. → Cần cân bằng giữa tốc độ và hiệu quả bộ nhớ."
+      },
+      {
+        "id": 46,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "F = A'B'D' + AC'D + ABD", "label": "A" },
+          { "text": "F = A'B'D + AC'D + ABD", "label": "B" },
+          { "text": "F = A'B'D + AC'D' + ABD", "label": "C" },
+          { "text": "F = A'B'D + A'C'D + ABD", "label": "D" }
+        ],
+        "question": "Write the Boolean expression for each of the logic circuits.",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-10-29%20230248.png",
+        "explanation": "Virtual memory cho phép chạy chương trình lớn hơn dung lượng RAM thực tế bằng cách hoán đổi dữ liệu giữa RAM và ổ đĩa. → Giúp máy tính chạy đa nhiệm mượt hơn, dù RAM nhỏ."
+      }
                 ]
             },
             PRF: {
                 title: "Project Requirements Framework",
                 questions: [
-                    {
-                        question: "What is the most important characteristic of a well-defined requirement in a PRF?",
-                        options: ["It should be technically complex.", "It should be written by the project manager only.", "It should be specific, measurable, achievable, relevant, and time-bound (SMART).", "It should be kept vague to allow for flexibility."],
-                        answer: 2,
-                        explanation: "The SMART criteria ensure that requirements are clear, verifiable, and contribute directly to the project's goals."
-                    },
-                    {
-                        question: "In the PRF process, who is the primary source for gathering functional requirements?",
-                        options: ["The development team.", "The project stakeholders or end-users.", "The quality assurance (QA) team.", "The company's competitors."],
-                        answer: 1,
-                        explanation: "Stakeholders and end-users are the ones who will interact with the final product, making them the best source for what the system needs to *do*."
-                    },
-                    {
-                        question: "What is the purpose of a 'traceability matrix' in a PRF?",
-                        options: ["To track the budget for the project.", "To link requirements to their source, design, code, and tests.", "To assign tasks to team members.", "To document meeting minutes."],
-                        answer: 1,
-                        explanation: "A traceability matrix ensures that every requirement is addressed in the design, implemented in the code, and verified through testing, preventing anything from being missed."
-                    }
+                          {
+        "id": 1,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "printf(\"ll\");", "label": "A" },
+          { "text": "printf(\"abc\");", "label": "B" },
+          { "text": "printf(\"%%\");", "label": "C" },
+          { "text": "printf(\"\\n\");", "label": "D" }
+        ],
+        "question": "Which of the following statements is invalid?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 2,
+        "type": "multiple",
+        "points": 2,
+        "correct": ["C", "E"],
+        "options": [
+          { "text": "scanf(\"%s\", s);", "label": "A" },
+          { "text": "scanf(\"%[^\\n]\", s);", "label": "B" },
+          { "text": "getc(s);", "label": "C" },
+          { "text": "gets(s)", "label": "D" },
+          { "text": "scanf(s);", "label": "E" }
+        ],
+        "question": "What is incorrect when input a string?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 3,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "float* ptr;", "label": "A" },
+          { "text": "float ptr;", "label": "B" },
+          { "text": "*float ptr;", "label": "C" },
+          { "text": "float ptr *;", "label": "D" }
+        ],
+        "question": "Choose the correct statement for declaring a float pointer:",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 4,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "string a;", "label": "A" },
+          { "text": "float a = 3e2;", "label": "B" },
+          { "text": "int* a;", "label": "C" },
+          { "text": "float *a;", "label": "D" },
+          { "text": "char * a;", "label": "E" }
+        ],
+        "question": "Which of the following declaration is not supported by C?",
+        "image_url": "",
+        "explanation": "Trong C không có kiểu dữ liệu string. Chuỗi trong C phải dùng char[] hoặc char *. The rest đều hợp lệ."
+      },
+      {
+        "id": 5,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "float* fun(float *p);", "label": "A" },
+          { "text": "float fun(float *p);", "label": "B" },
+          { "text": "float fun(double *p);", "label": "C" },
+          { "text": "float* fun(int *p);", "label": "D" }
+        ],
+        "question": "Which of the following statements correctly declares a function that receives a float pointer parameter and returns a float pointer?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 6,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "int_a3;", "label": "A" },
+          { "text": "int a_3;", "label": "B" },
+          { "text": "int 3_a;", "label": "C" },
+          { "text": "int_3a", "label": "D" }
+        ],
+        "question": "Which of the following is not a valid variable name declaration?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 7,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": "int 1student ID;", "label": "A" },
+          { "text": "int_Student_ID1;", "label": "B" },
+          { "text": "int Age$;", "label": "C" },
+          { "text": "int long;", "label": "D" }
+        ],
+        "question": "Which of the following is a valid variable definition?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 8,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "int *p;", "label": "A" },
+          { "text": "int p *;", "label": "B" },
+          { "text": "int +p;", "label": "C" },
+          { "text": "int $p;", "label": "D" }
+        ],
+        "question": "Choose the correct statement for declaring a pointer variable to an integer variable.",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 9,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": "int a[2,3] = [[1,2,3],[4,5,6]];", "label": "A" },
+          { "text": "int a[ll]= {1,2,3},{4,5,6}};", "label": "B" },
+          { "text": "int a[2][3]= [[1,2,3],[4,5,6]];", "label": "C" },
+          { "text": "int a[l[3]={{1,2,3},{4,5,6}};", "label": "D" }
+        ],
+        "question": "Which of the following is a valid code to use to declare and initialize a two-dimensional array?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 10,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "int arr[5];", "label": "A" },
+          { "text": "array int arr = [5];", "label": "B" },
+          { "text": "int arr = new int[5];", "label": "C" },
+          { "text": "int arr{5};", "label": "D" }
+        ],
+        "question": "Which of the following correctly declares an integer array of size 5 in C/C++?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 11,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "int* a = (int*)malloc(5*sizeof(int));", "label": "A" },
+          { "text": "int a[5];", "label": "B" },
+          { "text": "int a[5][5];", "label": "C" },
+          { "text": "free(a);", "label": "D" }
+        ],
+        "question": "What represents dynamic allocation in C?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 12,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "feof()", "label": "A" },
+          { "text": "eof()", "label": "B" },
+          { "text": "fscanf()", "label": "C" },
+          { "text": "checkEOF()", "label": "D" }
+        ],
+        "question": "What function in C is used to check if the end of a file has been reached?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 13,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "int minus(int a; int b) {return (a - b);}", "label": "A" },
+          { "text": "int minus (int a, b) {return (a - b);};", "label": "B" },
+          {
+            "text": "int minus (int a, int b) {return (a - b);};",
+            "label": "C"
+          },
+          { "text": "int minus (int a, b) {return (a - b);};", "label": "D" }
+        ],
+        "question": "Which is the correct function definition that will run without errors?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 14,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "void printSum(int* a, int b);", "label": "A" },
+          { "text": "int printSum(int* a, int b);", "label": "B" },
+          { "text": "int printSum(int a, b);", "label": "C" },
+          { "text": "int* printSum(int* a, int b);", "label": "D" }
+        ],
+        "question": "What is incorrect about function prototype?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 15,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          {
+            "text": "for ( Init1, Init2; Condition; Task1, Task2);",
+            "label": "A"
+          },
+          { "text": "for ( Init1, Condition ,Task1);", "label": "B" },
+          { "text": "for (Condition ; Init1, Init2; Task1);", "label": "C" },
+          { "text": "for ( Init1; Init2; Condition ; Task2)", "label": "D" }
+        ],
+        "question": "Which of the following is the correct syntax of the for statement?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 16,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": "int average( double, double);", "label": "A" },
+          { "text": "double average( double, double);", "label": "B" },
+          { "text": "char average( double, double);", "label": "C" },
+          { "text": "void average( double, double);", "label": "D" }
+        ],
+        "question": "The function which will compute the average of two real numbers should be prototyped as:",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 17,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "int i=(double)123.5;", "label": "A" },
+          { "text": "double t = double(2);", "label": "B" },
+          { "text": "double t = (double) 2;", "label": "C" },
+          { "text": "double t = (int) 2.7;", "label": "D" }
+        ],
+        "question": "Which implicit type casting is used in the following codes in C programming?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 18,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "char arr[] = \"Hello\";", "label": "A" },
+          {
+            "text": "char arrll = ['H', 'e', 'l', 'l', 'o','/e'];",
+            "label": "B"
+          },
+          { "text": "Char[] arr =\"Hello\";", "label": "C" },
+          {
+            "text": "Charl] arr = {'H', 'e', 'T', 'T', 'o','/0'};",
+            "label": "D"
+          }
+        ],
+        "question": "How can you initialize a character array in C?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 19,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": "char c1 = 'B'; printf(\"%c\",c1);", "label": "A" },
+          { "text": "char c2 = 066; printf(\"%c\",c2);", "label": "B" },
+          { "text": "char c3 = 0x42; printf(\"%c\",c3);", "label": "C" },
+          { "text": "char c4 = 0102; printf(\"%c\",c4);", "label": "D" }
+        ],
+        "question": "Which of the following statements has a different result from the other statements?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 20,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "printf(\"Il\");", "label": "A" },
+          { "text": "printf(\"abc\");", "label": "B" },
+          { "text": "printf(\"%%\");", "label": "C" },
+          { "text": "printf(\"\\n\");", "label": "D" }
+        ],
+        "question": "Which of the following statements is invalid?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 21,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "do{ statements; } while(condition) ;", "label": "A" },
+          { "text": "do while(condition) { statements;}", "label": "B" },
+          { "text": "do{ statements; } while (condition)", "label": "C" },
+          { "text": "do{ statements; } while (condition) ;", "label": "D" }
+        ],
+        "question": "Which of the following is the correct syntax of the do-while statement?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 22,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "(condition) ? True_Value : False_Value", "label": "A" },
+          { "text": "for ( InitBlock; Condition; Task2) Task1;", "label": "B" },
+          { "text": "do{ statements;} while (condition) ;", "label": "C" },
+          { "text": "while (condition){ statements; }", "label": "D" }
+        ],
+        "question": "Which of the following is an incorrect iteration construct?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 23,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "int fputc( int c, FILE *fp );", "label": "A" },
+          { "text": "int fputs( const char *s, FILE *fp );", "label": "B" },
+          { "text": "int fgetc( FILE *fp );", "label": "C" },
+          { "text": "char *fgets( char *buf, int n, FILE *fp );", "label": "D" }
+        ],
+        "question": "Which function writes the character value of the argument c to the output stream referenced by fp?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 24,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "condition ? expression1 : expression2", "label": "A" },
+          { "text": "condition ? expression1, expression2", "label": "B" },
+          { "text": "condition : expression1 ? expression2", "label": "C" },
+          { "text": "expression1 : condition ? expression2", "label": "D" }
+        ],
+        "question": "What is the syntax of the conditional operator in C?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 25,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": "int average( double, double);", "label": "A" },
+          { "text": "double average( double, double);", "label": "B" },
+          { "text": "char average( double, double);", "label": "C" },
+          { "text": "void average( double, double);", "label": "D" }
+        ],
+        "question": "The function which will compute the average of two real numbers should be prototyped as:",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 26,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "double", "label": "A" },
+          { "text": "int", "label": "B" },
+          { "text": "long double", "label": "C" },
+          { "text": "float", "label": "D" }
+        ],
+        "question": "The pow() function in the math.h library is used to calculate the value of a number raised to a specified power. What is the return value type of the pow() function?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 27,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "while (condition) { statements; }", "label": "A" },
+          { "text": "(condition){ statements ;}", "label": "B" },
+          { "text": "while (condition) { statements ;}", "label": "C" },
+          { "text": "{ statements } while (condition);", "label": "D" }
+        ],
+        "question": "Which of the following is the correct syntax of the while statement?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 28,
+        "type": "multiple",
+        "points": 2,
+        "correct": ["B", "C"],
+        "options": [
+          { "text": "FILE *f = fwrite(\"output.txt\", \"a\" );", "label": "A" },
+          { "text": "FILE *f = fopen(\"output.txt\", \"a\" );", "label": "B" },
+          { "text": "FILE *f = fopen(\"output.txt\", \"a+\");", "label": "C" },
+          { "text": "FILE *f = fopen(\"output.txt\", \"w+\");", "label": "D" },
+          { "text": "FILE *f = fopen(\"output.txt\", \"w\" );", "label": "E" }
+        ],
+        "question": "What commands are used to write data appended to the end of the file? (Choose 2 answers)",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 29,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "ptr = realloc( ptr, 5 * sizeof(int) );", "label": "A" },
+          { "text": "realloc( ptr, 5 * sizeof(int) );", "label": "B" },
+          { "text": "ptr += malloc( 5* sizeof( int));", "label": "C" },
+          { "text": "realloc( ptr, 20);", "label": "D" },
+          { "text": "ptr = realloc( ptr, 20);", "label": "E" }
+        ],
+        "question": "int *ptr = malloc( sizeof( int) ); To reallocate ptr to be an array of 5 elements, which of the following statements generates an error?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 30,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "printf(\"Hello, World!\");", "label": "A" },
+          { "text": "cout << \"Hello, World!\" << endl;", "label": "B" },
+          { "text": "System.out.println(\"Hello, World!\");", "label": "C" },
+          { "text": "echo \"Hello, World!\";", "label": "D" }
+        ],
+        "question": "What is the correct syntax to output \"Hello, World!\" in C/C++?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 31,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "FILE *f = fwrite(\"test.bin\", \"b\" );", "label": "A" },
+          { "text": "FILE *f = fopen(\"test.bin\", \"w\");", "label": "B" },
+          { "text": "FILE *f = fopen(\"test.bin\", \"wb\" );", "label": "C" },
+          { "text": "FILE *f = fwriteb(\"test.bin\" );", "label": "D" },
+          { "text": "FILE *f = fopen(\"test.bin\", \"bwr\" );", "label": "E" }
+        ],
+        "question": "What is a proper method of opening a file for writing as binary file?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 32,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "1254", "label": "A" },
+          { "text": "1158", "label": "B" },
+          { "text": "1159", "label": "C" },
+          { "text": "1257", "label": "D" }
+        ],
+        "question": "A one dimensional array A has indices 1 ... 100. Each element is a string and takes up three byte. The starting address of the array A[1] is 1110 decimal. The address of A[49] is ____",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 33,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": "0b01100010", "label": "A" },
+          { "text": "0b10100010", "label": "B" },
+          { "text": "0b10010010", "label": "C" },
+          { "text": "0b10110010", "label": "D" }
+        ],
+        "question": "What is the binary representation of 0xA2?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 34,
+        "type": "single",
+        "points": 1,
+        "correct": ["B"],
+        "options": [
+          { "text": 1, "label": "A" },
+          { "text": "0", "label": "B" },
+          { "text": -1, "label": "C" }
+        ],
+        "question": "The strcmp() compares two strings character by character. If the strings are equal, the function returns ...",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 35,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": 1, "label": "A" },
+          { "text": "0", "label": "B" },
+          { "text": -1, "label": "C" }
+        ],
+        "question": "What is the result of the statement strcmp(\"abcdef\",\"abdc\")?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 36,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "True", "label": "A" },
+          { "text": 1, "label": "B" },
+          { "text": "0", "label": "C" },
+          { "text": -1, "label": "D" }
+        ],
+        "question": "If the two strings have the same value, then strcmp() function returns ____",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 37,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": "0", "label": "A" },
+          { "text": "1", "label": "B" },
+          { "text": -1, "label": "C" },
+          { "text": "<0", "label": "D" },
+          { "text": ">0", "label": "E" }
+        ],
+        "question": "Given two character strings s1=\"C\" and s2=\"C and C++\", the function strcmp(s1, s2) will return the value ____",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 38,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "0", "label": "A" },
+          { "text": "1", "label": "B" },
+          { "text": "2", "label": "C" },
+          { "text": "3", "label": "D" }
+        ],
+        "question": "Given the following code snippet: int a[10] = {1, 2, 3}; What is the value of a[3]?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 39,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": 1, "label": "A" },
+          { "text": 3, "label": "B" },
+          { "text": 2, "label": "C" },
+          { "text": "0", "label": "D" }
+        ],
+        "question": "What is the result of the expression 10 % 3?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 40,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": 1, "label": "A" },
+          { "text": "0", "label": "B" },
+          { "text": -1, "label": "C" },
+          { "text": 2, "label": "D" }
+        ],
+        "question": "What is the return value of the strcmp(\"abc\",\"Abcdef\") function?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 41,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": 1, "label": "A" },
+          { "text": 2, "label": "B" },
+          { "text": 3, "label": "C" },
+          { "text": 4, "label": "D" }
+        ],
+        "question": "What will be the output of the C program?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20122657.png",
+        "explanation": ""
+      },
+      {
+        "id": 42,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": 1, "label": "A" },
+          { "text": 4, "label": "B" },
+          { "text": 5, "label": "C" },
+          { "text": "0", "label": "D" }
+        ],
+        "question": "What is the output of the following code snippet?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20122853.png",
+        "explanation": ""
+      },
+      {
+        "id": 43,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": 3, "label": "A" },
+          { "text": 2, "label": "B" },
+          { "text": "2.5", "label": "C" },
+          { "text": "2.6", "label": "D" }
+        ],
+        "question": "What is the value of ceil(2.55) from the math.h library?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 44,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": 14, "label": "A" },
+          { "text": 15, "label": "B" },
+          { "text": 16, "label": "C" },
+          { "text": 20, "label": "D" }
+        ],
+        "question": "What is the output when the sample code below is executed?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20123047.png",
+        "explanation": ""
+      },
+      {
+        "id": 45,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "0", "label": "A" },
+          { "text": 4, "label": "B" },
+          { "text": 2, "label": "C" },
+          { "text": 8, "label": "D" }
+        ],
+        "question": "Suppose there is a function in C as follows: (ở dưới) What is the value of z after executing the statement z=g(2,0)? ",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20123220.png",
+        "explanation": ""
+      },
+      {
+        "id": 46,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": 9, "label": "A" },
+          { "text": 10, "label": "B" },
+          { "text": 8, "label": "C" },
+          { "text": "It depends on the contents of the array", "label": "D" }
+        ],
+        "question": "What is the maximum index of the last character in a character array initialized with a size is 10?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 47,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "0", "label": "A" },
+          { "text": 1, "label": "B" },
+          { "text": 10, "label": "C" },
+          { "text": 11, "label": "D" }
+        ],
+        "question": "What is the result of the expression !1?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 48,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": 2, "label": "A" },
+          { "text": 8, "label": "B" },
+          { "text": 16, "label": "C" },
+          { "text": 6, "label": "D" }
+        ],
+        "question": "What will be the output of the C program?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20123431.png",
+        "explanation": ""
+      },
+      {
+        "id": 49,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "4-1", "label": "A" },
+          { "text": "0 1", "label": "B" },
+          { "text": "1 0", "label": "C" },
+          { "text": "0 2", "label": "D" }
+        ],
+        "question": "What will the following program print?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20123611.png",
+        "explanation": ""
+      },
+      {
+        "id": 50,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": 9, "label": "A" },
+          { "text": 8, "label": "B" },
+          { "text": 12, "label": "C" },
+          { "text": 10, "label": "D" }
+        ],
+        "question": "What is the output when the sample code below is executed?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20123709.png",
+        "explanation": ""
+      },
+      {
+        "id": 51,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": 5, "label": "A" },
+          { "text": 22, "label": "B" },
+          { "text": 18, "label": "C" },
+          { "text": 25, "label": "D" },
+          { "text": 28, "label": "E" }
+        ],
+        "question": "What is the result of the \"printf(\"%d\", 0x11 | 010);\" command?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 52,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": 3, "label": "A" },
+          { "text": 13, "label": "B" },
+          { "text": 19, "label": "C" },
+          { "text": 25, "label": "D" },
+          { "text": 27, "label": "E" }
+        ],
+        "question": "In the sample code int a = 0x10 | 011; the variable a will contain the value (in decimal number system):",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 53,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": 5, "label": "A" },
+          { "text": 4, "label": "B" },
+          { "text": 9, "label": "C" },
+          { "text": 12, "label": "D" }
+        ],
+        "question": "Assume we have the following code: (ở dưới) What is the result of the following expression: ++*p?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20124215.png",
+        "explanation": "i = 4; p trỏ đến i ⇒ *p chính là giá trị của i, tức là 4; ++*p nghĩa là tăng giá trị mà p trỏ tới lên 1. Nên i trở thành 5. → Kết quả biểu thức là 5."
+      },
+      {
+        "id": 54,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "0", "label": "A" },
+          { "text": 1, "label": "B" },
+          { "text": "10", "label": "C" },
+          { "text": "100", "label": "D" }
+        ],
+        "question": "Assume we have a snippet code in C. The output will be:",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20124402.png",
+        "explanation": ""
+      },
+      {
+        "id": 55,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "i=2", "label": "A" },
+          { "text": "i=0", "label": "B" },
+          { "text": "j=3", "label": "C" },
+          { "text": "j=1", "label": "D" }
+        ],
+        "question": "What will be the output of the C program?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20124621.png",
+        "explanation": ""
+      },
+      {
+        "id": 56,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "11,11", "label": "A" },
+          { "text": "1,1", "label": "B" },
+          { "text": "0,0", "label": "C" },
+          { "text": "0,1", "label": "D" }
+        ],
+        "question": "What will be the output of the following program?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20125216.png",
+        "explanation": ""
+      },
+      {
+        "id": 57,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": 22, "label": "A" },
+          { "text": 10, "label": "B" },
+          { "text": 12, "label": "C" },
+          { "text": 21, "label": "D" }
+        ],
+        "question": "What is the output of the following code snippet?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20125539.png",
+        "explanation": ""
+      },
+      {
+        "id": 58,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": 16, "label": "A" },
+          { "text": 28, "label": "B" },
+          { "text": 37, "label": "C" },
+          { "text": 32, "label": "D" },
+          { "text": -28, "label": "E" }
+        ],
+        "question": "What is the value of z after the \"int a = 8, b = 6, c = 4, b++ * ++c + -- a;\" command?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 59,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": 78, "label": "A" },
+          { "text": 76, "label": "B" },
+          { "text": 74, "label": "C" },
+          { "text": 72, "label": "D" }
+        ],
+        "question": "What is the result when converting 0101010 in binary system to decimal system?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 60,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": 101, "label": "A" },
+          { "text": 102, "label": "B" },
+          { "text": "0", "label": "C" },
+          { "text": "Address of i", "label": "D" }
+        ],
+        "question": "What will be the output of the following program?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20125802.png",
+        "explanation": ""
+      },
+      {
+        "id": 61,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": 1264, "label": "A" },
+          { "text": 1200, "label": "B" },
+          { "text": 1208, "label": "C" },
+          { "text": 1209, "label": "D" }
+        ],
+        "question": "Assume we have the following codes: (ở dưới) Suppose that a double occupies the memory block of 8 bytes, and the address of d is 1200. What is the result of the following expression: p + 8?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20125940.png",
+        "explanation": ""
+      },
+      {
+        "id": 62,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": 105, "label": "A" },
+          { "text": 150, "label": "B" },
+          { "text": 120, "label": "C" },
+          { "text": 210, "label": "D" }
+        ],
+        "question": "What will be the output of the following C code?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20130101.png",
+        "explanation": "(14(14-1))/2=105"
+      },
+      {
+        "id": 63,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": 130, "label": "A" },
+          { "text": -130, "label": "B" },
+          { "text": 126, "label": "C" },
+          { "text": -126, "label": "D" }
+        ],
+        "question": "What will be the output of the following C code?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20130209.png",
+        "explanation": ""
+      },
+      {
+        "id": 64,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "2 3", "label": "A" },
+          { "text": "3 2", "label": "B" },
+          { "text": "3 7", "label": "C" },
+          { "text": "2 6356728", "label": "D" }
+        ],
+        "question": "What will be the output of the following C code?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20130318.png",
+        "explanation": ""
+      },
+      {
+        "id": 65,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "0 5", "label": "A" },
+          { "text": "5 10", "label": "B" },
+          { "text": "10 5", "label": "C" },
+          { "text": "0 0", "label": "D" }
+        ],
+        "question": "What is the output when the sample code below is executed?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20130431.png",
+        "explanation": ""
+      },
+      {
+        "id": 66,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "10 5", "label": "A" },
+          { "text": "5 10", "label": "B" },
+          { "text": "5 5", "label": "C" },
+          { "text": "10 10", "label": "D" }
+        ],
+        "question": "What will be the output of the following code snippet:",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20130534.png",
+        "explanation": ""
+      },
+      {
+        "id": 67,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "15 10 5", "label": "A" },
+          { "text": "15 5 10", "label": "B" },
+          { "text": "10 15 15", "label": "C" },
+          { "text": "10 10 5", "label": "D" }
+        ],
+        "question": "What will be the output of the following code snippet:",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20130758.png",
+        "explanation": ""
+      },
+      {
+        "id": 68,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "1 11 10", "label": "A" },
+          { "text": "10 11 1", "label": "B" },
+          { "text": "10 11 10", "label": "C" },
+          { "text": "1 1 10", "label": "D" }
+        ],
+        "question": "What will be the output of the following C code?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20130920.png",
+        "explanation": ""
+      },
+      {
+        "id": 69,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "8 9", "label": "A" },
+          { "text": "9 8", "label": "B" },
+          { "text": "8 8", "label": "C" },
+          { "text": "9 9", "label": "D" }
+        ],
+        "question": "What is the output of the following code snippet?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20131240.png",
+        "explanation": ""
+      },
+      {
+        "id": 70,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": "10,10", "label": "A" },
+          { "text": "10,11", "label": "B" },
+          { "text": "11,10", "label": "C" },
+          { "text": "11,11", "label": "D" }
+        ],
+        "question": "What will be the output of the following C code?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20131428.png",
+        "explanation": ""
+      },
+      {
+        "id": 71,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "Compiler error", "label": "A" },
+          { "text": 22, "label": "B" },
+          { "text": 21, "label": "C" },
+          { "text": 20, "label": "D" }
+        ],
+        "question": "What will be the output of the following program?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20131652.png",
+        "explanation": ""
+      },
+      {
+        "id": 72,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "4 13", "label": "A" },
+          { "text": "5 12", "label": "B" },
+          { "text": "4 12", "label": "C" },
+          { "text": "5 13", "label": "D" },
+          { "text": "1 1", "label": "E" }
+        ],
+        "question": "What is the result of the \"printf(\"%d %d\", 12&5,12|5);\" command?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 73,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "102, 102", "label": "A" },
+          { "text": "100, 102", "label": "B" },
+          { "text": "100, 100", "label": "C" },
+          { "text": "102, 100", "label": "D" }
+        ],
+        "question": "What will be the output of the following program?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20131841.png",
+        "explanation": ""
+      },
+      {
+        "id": 74,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "1;18;120", "label": "A" },
+          { "text": "10;19;60", "label": "B" },
+          { "text": "1;20;60", "label": "C" },
+          { "text": "10; 19;120", "label": "D" }
+        ],
+        "question": "What is the output when the sample code below is executed?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20131957.png",
+        "explanation": ""
+      },
+      {
+        "id": 75,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "-20;90;8", "label": "A" },
+          { "text": "70;90;80", "label": "B" },
+          { "text": "150;80;8", "label": "C" },
+          { "text": "150;90;80", "label": "D" }
+        ],
+        "question": "What is the output when the sample code below is executed?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20135533.png",
+        "explanation": ""
+      },
+      {
+        "id": 76,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": "97;98;99;100", "label": "A" },
+          { "text": "65;66;67;68", "label": "B" },
+          { "text": "65;98;67;100", "label": "C" },
+          { "text": "98;67;100;0", "label": "D" }
+        ],
+        "question": "What is the results will be displayed on the screen after executing the following code:",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20135623.png",
+        "explanation": ""
+      },
+      {
+        "id": 77,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "10 8 6 4 2", "label": "A" },
+          { "text": "10 8 6 4 2 0", "label": "B" },
+          { "text": "10 8 6 4 2 0 -2 -4", "label": "C" },
+          { "text": "10 9 8 7 6 5 4 3 2", "label": "D" }
+        ],
+        "question": "What is the output when the sample code below is executed?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20135800.png",
+        "explanation": ""
+      },
+      {
+        "id": 78,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "0 1 1 2 3 3", "label": "A" },
+          { "text": "0.5 1.0 1.5 2.5 3.0 3.5", "label": "B" },
+          { "text": "1 1 2 3 4", "label": "C" },
+          { "text": "0 1 1 2 2 3", "label": "D" }
+        ],
+        "question": "What is the result displayed on the screen of the following program?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20135931.png",
+        "explanation": ""
+      },
+      {
+        "id": 79,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "Compiler error", "label": "A" },
+          { "text": "1.000000", "label": "B" },
+          { "text": "1.500000", "label": "C" },
+          { "text": "1.0", "label": "D" },
+          { "text": "1.5", "label": "E" },
+          { "text": 1, "label": "F" }
+        ],
+        "question": "What does the following code print?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20140123.png",
+        "explanation": "a % b lỗi ở đây vì % áp dụng cho số nguyên, còn số thực dùng fmod(a, b)"
+      },
+      {
+        "id": 80,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "0.000000", "label": "A" },
+          { "text": "2.000000", "label": "B" },
+          { "text": "2.500000", "label": "C" },
+          { "text": "Garbage value", "label": "D" }
+        ],
+        "question": "What is the results will be displayed on the screen after executing the following code:",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20140216.png",
+        "explanation": ""
+      },
+      {
+        "id": 81,
+        "type": "single",
+        "points": 1,
+        "correct": ["D"],
+        "options": [
+          { "text": "2.5", "label": "A" },
+          { "text": 2, "label": "B" },
+          { "text": "2.500000", "label": "C" },
+          { "text": "2.000000", "label": "D" }
+        ],
+        "question": "What is the results will be displayed on the screen after executing the following code:",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20140345.png",
+        "explanation": ""
+      },
+      {
+        "id": 82,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": "0", "label": "A" },
+          { "text": 2, "label": "B" },
+          { "text": "Compiler error.", "label": "C" },
+          { "text": 4, "label": "D" }
+        ],
+        "question": "What will be the output of the C program?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20140514.png",
+        "explanation": "Vì chưa truyền đối số vào i"
+      },
+      {
+        "id": 83,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": 1, "label": "A" },
+          { "text": "0", "label": "B" },
+          { "text": "Loop infinitely", "label": "C" },
+          { "text": "Compile time error", "label": "D" }
+        ],
+        "question": "How many times will the do-while loop execute the code if the condition is false?",
+        "image_url": "",
+        "explanation": ""
+      },
+      {
+        "id": 84,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "Compile time error", "label": "A" },
+          { "text": 1, "label": "B" },
+          { "text": 2, "label": "C" },
+          { "text": "return 1:return 2", "label": "D" }
+        ],
+        "question": "What is the output when the sample code below is executed?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20140722.png",
+        "explanation": "Return là lệch, k phải biếu thức trong toán tử 3 ngôi"
+      },
+      {
+        "id": 85,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": 2, "label": "A" },
+          { "text": 3, "label": "B" },
+          { "text": 4, "label": "C" },
+          { "text": "An error will be raised.", "label": "D" }
+        ],
+        "question": "What does the following program display?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20140814.png",
+        "explanation": ""
+      },
+      {
+        "id": 86,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": 2, "label": "A" },
+          { "text": 5, "label": "B" },
+          { "text": "Compilation error.", "label": "C" },
+          { "text": 3, "label": "D" }
+        ],
+        "question": "What will be the output of the C program?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20141022.png",
+        "explanation": ""
+      },
+      {
+        "id": 87,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "Compile time error", "label": "A" },
+          { "text": 6, "label": "B" },
+          { "text": 4, "label": "C" },
+          { "text": 5, "label": "D" }
+        ],
+        "question": "What is the output when the sample code below is executed?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20141146.png",
+        "explanation": ""
+      },
+      {
+        "id": 88,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": "Compile error", "label": "A" },
+          { "text": 5, "label": "B" },
+          { "text": "NULL", "label": "C" },
+          { "text": 6, "label": "D" }
+        ],
+        "question": "What is the output of the following code snippet?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20141349.png",
+        "explanation": ""
+      },
+      {
+        "id": 89,
+        "type": "single",
+        "points": 1,
+        "correct": ["C"],
+        "options": [
+          { "text": 5, "label": "A" },
+          { "text": "Run time error", "label": "B" },
+          { "text": 6, "label": "C" },
+          { "text": "Junk", "label": "D" }
+        ],
+        "question": "What will be the output of the following C code?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20141507.png",
+        "explanation": ""
+      },
+      {
+        "id": 90,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+  { "text": 10, "label": "A" },
+          { "text": 5, "label": "B" },
+          { "text": 15, "label": "C" },
+          { "text": "Compiler error", "label": "D" }
+        ],
+        "question": "What is the output of the following code snippet?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20141618.png",
+        "explanation": ""
+      },
+      {
+        "id": 91,
+        "type": "single",
+        "points": 1,
+        "correct": ["A"],
+        "options": [
+          { "text": 10, "label": "A" },
+          { "text": 20, "label": "B" },
+          { "text": " ' '", "label": "C" },
+          { "text": "Undefined", "label": "D" }
+        ],
+        "question": "What is the output of the following code if the user enters the value \"20\"?",
+        "image_url": "https://zgecljmkyuhcmiwxyczn.supabase.co/storage/v1/object/public/quiz-images/Screenshot%202025-11-05%20141743.png",
+        "explanation": ""
+      }
                 ]
             }
         };
@@ -554,7 +3249,6 @@
         const navigationContainer = document.getElementById('navigation-container');
         const navigationContainerResults = document.getElementById('navigation-container-results');
 
-
         // --- Functions ---
         function startQuiz(quizName) {
             currentQuiz = quizData[quizName];
@@ -584,7 +3278,7 @@
         function displayQuestion() {
             const question = currentQuiz.questions[currentQuestionIndex];
             
-            questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
+            questionNumber.textContent = `Question ${question.id}`;
             questionText.textContent = question.question;
             questionCount.textContent = `Question ${currentQuestionIndex + 1} of ${currentQuiz.questions.length}`;
             
@@ -597,7 +3291,7 @@
             question.options.forEach((option, index) => {
                 const optionElement = document.createElement('button');
                 optionElement.classList.add('option');
-                optionElement.textContent = `${String.fromCharCode(65 + index)}) ${option}`;
+                optionElement.textContent = `${option.label}) ${option.text}`;
                 optionElement.onclick = () => selectOption(index);
                 optionsContainer.appendChild(optionElement);
             });
@@ -637,8 +3331,12 @@
         function selectOption(selectedIndex) {
             if (userAnswers[currentQuestionIndex] !== undefined) return;
 
-            const options = document.querySelectorAll('.option');
             const question = currentQuiz.questions[currentQuestionIndex];
+            const options = document.querySelectorAll('.option');
+            
+            // Find the correct answer index based on the label
+            const correctLabel = question.correct[0];
+            const correctAnswerIndex = question.options.findIndex(opt => opt.label === correctLabel);
 
             userAnswers[currentQuestionIndex] = selectedIndex;
 
@@ -652,12 +3350,12 @@
             explanationContainer.style.display = 'block';
             explanationText.textContent = question.explanation;
 
-            if (selectedIndex === question.answer) {
+            if (selectedIndex === correctAnswerIndex) {
                 options[selectedIndex].classList.add('correct');
                 score++;
             } else {
                 options[selectedIndex].classList.add('incorrect');
-                options[question.answer].classList.add('correct');
+                options[correctAnswerIndex].classList.add('correct');
             }
 
             renderNavigation();
@@ -701,7 +3399,11 @@
                 const button = document.createElement('button');
                 button.classList.add('nav-button');
                 button.textContent = index + 1;
-                if (userAnswers[index] === question.answer) {
+                
+                const correctLabel = question.correct[0];
+                const correctAnswerIndex = question.options.findIndex(opt => opt.label === correctLabel);
+
+                if (userAnswers[index] === correctAnswerIndex) {
                     button.style.backgroundColor = 'var(--accent-color)';
                     button.style.borderColor = 'var(--accent-color)';
                     button.style.color = 'white';

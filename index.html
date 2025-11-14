@@ -18933,8 +18933,7 @@
             },
             CEA_OTHER: {
             title: "",
-            questions: 
-                                        [
+            questions: [
   {
     "id": 1,
     "type": "single",
@@ -27505,7 +27504,7 @@
             
             // Show correct/incorrect styling
             document.querySelectorAll('.option').forEach(option => {
-                const label = option.dataset.label;
+                let label = option.dataset.label.replace(/\u0391/g, "A").replace(/\u0392/g, "B").replace(/\u0421/g, "C");
                 if (correctAnswers.includes(label)) {
                     option.classList.add('correct');
                 } else if (selectedOptions.includes(label)) {

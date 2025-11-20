@@ -1,0 +1,117 @@
+[
+  {
+    "id": 1,
+    "type": "single",
+    "points": 1,
+    "correct": [
+      "B"
+    ],
+    "options": [
+      {
+        "text": "Processor - Peripheral device - Control device",
+        "label": "A"
+      },
+      {
+        "text": "Processor - Control device - Peripheral device",
+        "label": "B"
+      },
+      {
+        "text": "Control device - Peripheral device - Processor",
+        "label": "C"
+      },
+      {
+        "text": "None of the answers are correct",
+        "label": "D"
+      }
+    ],
+    "question": "In peripheral device management, what is the principle of hierarchical work on OS of third-generation computers?",
+    "image_url": "",
+    "explanation": ""
+  },
+  {
+    "id": 2,
+    "type": "single",
+    "points": 1,
+    "correct": [
+      "D"
+    ],
+    "options": [
+      {
+        "text": "DoS",
+        "label": "A"
+      },
+      {
+        "text": "Trojan horses",
+        "label": "B"
+      },
+      {
+        "text": "Worms",
+        "label": "C"
+      },
+      {
+        "text": "Viruses",
+        "label": "D"
+      }
+    ],
+    "question": "______ are unwanted programs that are hidden within other programs (host). When the user executes the host program",
+    "image_url": "",
+    "explanation": ""
+  },
+  {
+    "id": 3,
+    "type": "single",
+    "points": 1,
+    "correct": [
+      "D"
+    ],
+    "options": [
+      {
+        "text": "Black-box",
+        "label": "A"
+      },
+      {
+        "text": "Glass-box",
+        "label": "B"
+      },
+      {
+        "text": "Neither black-box nor glass-box",
+        "label": "C"
+      },
+      {
+        "text": "Both black-box and glass-box",
+        "label": "D"
+      }
+    ],
+    "question": "Testing a software system can involve _____ testing.",
+    "image_url": "",
+    "explanation": ""
+  },
+  {
+    "id": 4,
+    "type": "single",
+    "points": 1,
+    "correct": [
+      "B"
+    ],
+    "options": [
+      {
+        "text": "Analog signals",
+        "label": "A"
+      },
+      {
+        "text": "Electromagnetic signals",
+        "label": "B"
+      },
+      {
+        "text": "Digital signals",
+        "label": "C"
+      },
+      {
+        "text": "Electronic signals",
+        "label": "D"
+      }
+    ],
+    "question": "The role of the physical layer is to transfer the bits received from the data-link layer and convert them to _____ for transmission.",
+    "image_url": "",
+    "explanation": ""
+  }]

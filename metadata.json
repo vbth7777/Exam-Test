@@ -1,0 +1,5 @@
+{
+  "name": "CS Quiz Master",
+  "description": "A comprehensive Computer Science quiz application generated from CSV data, featuring interactive testing and JSON export capabilities.",
+  "requestFramePermissions": []
+}

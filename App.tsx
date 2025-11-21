@@ -59,6 +59,7 @@ const App: React.FC = () => {
     }, [currentQuestion, selectedAnswers]);
 
     const handleNext = useCallback(() => {
+        setSelectedAnswers({});
         setShowResult(false);
         if (currentQIndex < questions.length - 1) {
             setCurrentQIndex(prev => prev + 1);

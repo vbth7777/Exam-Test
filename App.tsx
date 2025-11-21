@@ -15,6 +15,7 @@ const App: React.FC = () => {
     const [quizFinished, setQuizFinished] = useState(false);
     const [commandBuffer, setCommandBuffer] = useState<string>('');
     const [showCommandOverlay, setShowCommandOverlay] = useState(false);
+    const [showNavigator, setShowNavigator] = useState(false);
 
     const handleQuizSelect = (quiz: QuizMetadata) => {
         setSelectedQuiz(quiz);
@@ -316,10 +317,10 @@ const App: React.FC = () => {
             </header>
 
             {/* Main Content */}
-            <main className="flex-1 max-w-5xl mx-auto w-full p-4 md:p-6 flex flex-col gap-8">
+            <main className="flex-1 max-w-5xl mx-auto w-full p-2 md:p-6 flex flex-col gap-4 md:gap-8 pb-20 md:pb-6">
 
                 {/* Question Card Area */}
-                <div className="flex-1 flex flex-col justify-center min-h-[400px]">
+                <div className="flex-1 flex flex-col justify-center min-h-[auto] md:min-h-[400px]">
                     <QuestionCard
                         question={currentQuestion}
                         selectedAnswers={selectedAnswers[currentQuestion.id] || []}
@@ -327,32 +328,45 @@ const App: React.FC = () => {
                         showResult={showResult}
                     />
 
-                    {/* Controls */}
-                    <div className="mt-8 flex justify-between items-center max-w-3xl mx-auto w-full px-1">
-                        <button
-                            onClick={handlePrev}
-                            disabled={currentQIndex === 0}
-                            className="flex items-center px-4 py-2 text-slate-500 font-medium hover:text-indigo-600 disabled:opacity-30 disabled:hover:text-slate-500 transition-colors"
-                        >
-                            <ChevronLeft className="w-5 h-5 mr-1" /> Previous
-                        </button>
+                    {/* Controls - Sticky on Mobile */}
+                    <div className="fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-slate-200 md:static md:bg-transparent md:border-0 md:p-0 md:mt-8 z-30">
+                        <div className="flex justify-between items-center max-w-3xl mx-auto w-full">
+                            <button
+                                onClick={handlePrev}
+                                disabled={currentQIndex === 0}
+                                className="flex items-center px-3 py-2 text-slate-500 font-medium hover:text-indigo-600 disabled:opacity-30 disabled:hover:text-slate-500 transition-colors text-sm md:text-base"
+                            >
+                                <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 mr-1" /> <span className="hidden xs:inline">Previous</span>
+                            </button>
 
-                        {!showResult ? (
+                            {!showResult ? (
+                                <button
+                                    onClick={handleCheckAnswer}
+                                    disabled={!selectedAnswers[currentQuestion.id] || selectedAnswers[currentQuestion.id].length === 0}
+                                    className="flex-1 mx-4 md:mx-0 md:flex-none px-6 py-3 bg-indigo-600 text-white rounded-xl font-semibold shadow-lg shadow-indigo-200 hover:bg-indigo-700 disabled:opacity-50 disabled:shadow-none transition-all text-sm md:text-base"
+                                >
+                                    Check Answer
+                                </button>
+                            ) : (
+                                <button
+                                    onClick={handleNext}
+                                    className="flex-1 mx-4 md:mx-0 md:flex-none flex items-center justify-center px-6 py-3 bg-emerald-600 text-white rounded-xl font-semibold shadow-lg shadow-emerald-200 hover:bg-emerald-700 transition-all text-sm md:text-base"
+                                >
+                                    {currentQIndex === questions.length - 1 ? 'Finish' : 'Next'} <ChevronRight className="w-4 h-4 md:w-5 md:h-5 ml-1" />
+                                </button>
+                            )}
+                            
                             <button
-                                onClick={handleCheckAnswer}
-                                disabled={!selectedAnswers[currentQuestion.id] || selectedAnswers[currentQuestion.id].length === 0}
-                                className="px-8 py-3 bg-indigo-600 text-white rounded-xl font-semibold shadow-lg shadow-indigo-200 hover:bg-indigo-700 disabled:opacity-50 disabled:shadow-none transition-all"
+                                onClick={() => setShowNavigator(!showNavigator)}
+                                className="md:hidden p-2 text-slate-500 hover:bg-slate-100 rounded-lg"
                             >
-                                Check Answer
+                                <div className="grid grid-cols-3 gap-0.5 w-5 h-5">
+                                    {[...Array(9)].map((_, i) => (
+                                        <div key={i} className="bg-current rounded-[1px]" />
+                                    ))}
+                                </div>
                             </button>
-                        ) : (
-                            <button
-                                onClick={handleNext}
-                                className="flex items-center px-8 py-3 bg-emerald-600 text-white rounded-xl font-semibold shadow-lg shadow-emerald-200 hover:bg-emerald-700 transition-all"
-                            >
-                                {currentQIndex === questions.length - 1 ? 'Finish Quiz' : 'Next Question'} <ChevronRight className="w-5 h-5 ml-1" />
-                            </button>
-                        )}
+                        </div>
                     </div>
 
                     {/* Shortcuts Hint */}
@@ -365,8 +379,19 @@ const App: React.FC = () => {
                 </div>
 
                 {/* Question Navigator Grid */}
-                <div className="bg-white border border-slate-200 rounded-xl p-4 md:p-6 shadow-sm">
-                    <h3 className="text-sm font-semibold text-slate-500 mb-4 uppercase tracking-wider">Question Navigator</h3>
+                <div className={`
+                    bg-white border border-slate-200 rounded-xl p-4 md:p-6 shadow-sm
+                    ${showNavigator ? 'block' : 'hidden md:block'}
+                `}>
+                    <div className="flex justify-between items-center mb-4">
+                        <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wider">Question Navigator</h3>
+                        <button 
+                            onClick={() => setShowNavigator(false)}
+                            className="md:hidden text-slate-400 hover:text-slate-600"
+                        >
+                            Close
+                        </button>
+                    </div>
                     <div className="grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-12 gap-2 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
                         {questions.map((q, idx) => {
                             const isCurrent = idx === currentQIndex;
@@ -375,7 +400,10 @@ const App: React.FC = () => {
                             return (
                                 <button
                                     key={q.id}
-                                    onClick={() => handleJumpToQuestion(idx)}
+                                    onClick={() => {
+                                        handleJumpToQuestion(idx);
+                                        setShowNavigator(false);
+                                    }}
                                     className={`
                             h-9 rounded-md font-medium text-xs transition-all duration-200 flex items-center justify-center border
                             ${isCurrent ? 'ring-2 ring-indigo-600 ring-offset-1 z-10 border-indigo-600 bg-indigo-600 text-white' : 'border-transparent'}

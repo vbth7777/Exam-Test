@@ -24,17 +24,17 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   };
 
   return (
-    <div className="bg-white shadow-lg rounded-2xl p-6 md:p-8 max-w-3xl mx-auto border border-slate-100">
-      <div className="flex justify-between items-start mb-6">
-        <h3 className="text-lg md:text-xl font-semibold text-slate-800 leading-relaxed">
+    <div className="bg-white shadow-lg rounded-2xl p-4 md:p-8 max-w-3xl mx-auto border border-slate-100">
+      <div className="flex justify-between items-start mb-4 md:mb-6">
+        <h3 className="text-base md:text-xl font-semibold text-slate-800 leading-relaxed">
           {question.question}
         </h3>
-        <span className="bg-indigo-50 text-indigo-700 text-xs font-medium px-2.5 py-1 rounded-full shrink-0 ml-4">
-          {isMultiple ? 'Multiple Choice' : 'Single Answer'}
+        <span className="bg-indigo-50 text-indigo-700 text-[10px] md:text-xs font-medium px-2 py-0.5 md:px-2.5 md:py-1 rounded-full shrink-0 ml-2 md:ml-4">
+          {isMultiple ? 'Multiple' : 'Single'}
         </span>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-2 md:space-y-3">
         {question.options.map((option) => {
           const isSelected = selectedAnswers.includes(option.label);
           const isCorrect = question.correct.some(c => normalizeLabel(c) === normalizeLabel(option.label));
@@ -73,15 +73,15 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
               key={option.label}
               onClick={() => handleOptionClick(option.label)}
               className={`
-                relative flex items-center p-4 border-2 rounded-xl cursor-pointer transition-all duration-200
+                relative flex items-center p-3 md:p-4 border-2 rounded-xl cursor-pointer transition-all duration-200
                 ${borderColor} ${bgColor} ${textColor} ${opacity}
                 ${!showResult && 'hover:border-indigo-300 hover:bg-indigo-50'}
               `}
             >
-              <div className="flex-shrink-0 mr-4">
-                <Icon className={`w-6 h-6 ${showResult && isCorrect ? 'text-emerald-600' : isSelected ? 'text-indigo-600' : 'text-slate-400'}`} />
+              <div className="flex-shrink-0 mr-3 md:mr-4">
+                <Icon className={`w-5 h-5 md:w-6 md:h-6 ${showResult && isCorrect ? 'text-emerald-600' : isSelected ? 'text-indigo-600' : 'text-slate-400'}`} />
               </div>
-              <div className="flex-1">
+              <div className="flex-1 text-sm md:text-base">
                 <span className="font-bold mr-2">{option.label}.</span>
                 <span className="font-medium">{option.text}</span>
               </div>

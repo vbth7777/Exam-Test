@@ -1129,7 +1129,7 @@ export const quizData: Question[] = [
     "id": 41,
     "type": "single",
     "points": 1,
-    "correct": ["C"],
+    "correct": ["B"],
     "options": [
       {
         "text": "Direct",

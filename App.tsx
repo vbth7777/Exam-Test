@@ -59,7 +59,6 @@ const App: React.FC = () => {
     }, [currentQuestion, selectedAnswers]);
 
     const handleNext = useCallback(() => {
-        setSelectedAnswers({});
         setShowResult(false);
         if (currentQIndex < questions.length - 1) {
             setCurrentQIndex(prev => prev + 1);
@@ -91,6 +90,7 @@ const App: React.FC = () => {
             setCurrentQIndex(index);
             setShowResult(false);
             setQuizFinished(false);
+            setSelectedAnswers({});
         }
     }, [questions.length]);
 
@@ -356,7 +356,7 @@ const App: React.FC = () => {
                                     {currentQIndex === questions.length - 1 ? 'Finish' : 'Next'} <ChevronRight className="w-4 h-4 md:w-5 md:h-5 ml-1" />
                                 </button>
                             )}
-                            
+
                             <button
                                 onClick={() => setShowNavigator(!showNavigator)}
                                 className="md:hidden p-2 text-slate-500 hover:bg-slate-100 rounded-lg"
@@ -386,7 +386,7 @@ const App: React.FC = () => {
                 `}>
                     <div className="flex justify-between items-center mb-4">
                         <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wider">Question Navigator</h3>
-                        <button 
+                        <button
                             onClick={() => setShowNavigator(false)}
                             className="md:hidden text-slate-400 hover:text-slate-600"
                         >

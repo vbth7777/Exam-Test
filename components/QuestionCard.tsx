@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Question } from '../types';
 import { CheckCircle2, Circle, XCircle } from 'lucide-react';
 import { normalizeLabel } from '../utils';
@@ -8,6 +8,8 @@ interface QuestionCardProps {
   selectedAnswers: string[];
   onSelect: (label: string) => void;
   showResult: boolean;
+  shuffleAnswers: boolean;
+  shuffleSeed: number;
 }
 
 export const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -15,6 +17,8 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   selectedAnswers,
   onSelect,
   showResult,
+  shuffleAnswers,
+  shuffleSeed,
 }) => {
   const isMultiple = question.type === 'multiple';
 
@@ -22,6 +26,29 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
     if (showResult) return;
     onSelect(label);
   };
+
+  const displayedOptions = useMemo(() => {
+    if (!shuffleAnswers) {
+      return question.options;
+    }
+    // Create a shallow copy and shuffle deterministically
+    const options = [...question.options];
+
+    // Simple seeded random function (Mulberry32-like or similar LCG)
+    // We combine the global shuffleSeed with the question ID to get a unique seed per question
+    let seed = shuffleSeed + question.id;
+
+    const random = () => {
+      const x = Math.sin(seed++) * 10000;
+      return x - Math.floor(x);
+    };
+
+    for (let i = options.length - 1; i > 0; i--) {
+      const j = Math.floor(random() * (i + 1));
+      [options[i], options[j]] = [options[j], options[i]];
+    }
+    return options;
+  }, [question, shuffleAnswers, shuffleSeed]);
 
   return (
     <div className="bg-white shadow-lg rounded-2xl p-4 md:p-8 max-w-3xl mx-auto border border-slate-100">
@@ -35,7 +62,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
       </div>
 
       <div className="space-y-2 md:space-y-3">
-        {question.options.map((option) => {
+        {displayedOptions.map((option) => {
           const isSelected = selectedAnswers.includes(option.label);
           const isCorrect = question.correct.some(c => normalizeLabel(c) === normalizeLabel(option.label));
 

@@ -4,7 +4,7 @@ import { quizzes, QuizMetadata } from './data';
 import { Question } from './types';
 import { QuestionCard } from './components/QuestionCard';
 import { QuizSelection } from './components/QuizSelection';
-import { Download, RefreshCw, ChevronRight, ChevronLeft, CheckSquare, ArrowLeft } from 'lucide-react';
+import { Download, RefreshCw, ChevronRight, ChevronLeft, CheckSquare, ArrowLeft, Shuffle } from 'lucide-react';
 
 const App: React.FC = () => {
     const [selectedQuiz, setSelectedQuiz] = useState<QuizMetadata | null>(null);
@@ -16,6 +16,8 @@ const App: React.FC = () => {
     const [commandBuffer, setCommandBuffer] = useState<string>('');
     const [showCommandOverlay, setShowCommandOverlay] = useState(false);
     const [showNavigator, setShowNavigator] = useState(false);
+    const [shuffleAnswers, setShuffleAnswers] = useState(false);
+    const [shuffleSeed, setShuffleSeed] = useState(0);
 
     const handleQuizSelect = (quiz: QuizMetadata) => {
         setSelectedQuiz(quiz);
@@ -306,6 +308,19 @@ const App: React.FC = () => {
                         >
                             <Download className="w-5 h-5" />
                         </button>
+                        <button
+                            onClick={() => {
+                                const newShuffleState = !shuffleAnswers;
+                                setShuffleAnswers(newShuffleState);
+                                if (newShuffleState) {
+                                    setShuffleSeed(Math.random());
+                                }
+                            }}
+                            title="Shuffle Answers"
+                            className={`p-2 rounded-full transition-colors ${shuffleAnswers ? 'text-indigo-600 bg-indigo-50' : 'text-slate-400 hover:text-indigo-600 hover:bg-indigo-50'}`}
+                        >
+                            <Shuffle className="w-5 h-5" />
+                        </button>
                     </div>
                 </div>
                 {/* Progress Bar */}
@@ -327,6 +342,8 @@ const App: React.FC = () => {
                         selectedAnswers={selectedAnswers[currentQuestion.id] || []}
                         onSelect={handleAnswerSelect}
                         showResult={showResult}
+                        shuffleAnswers={shuffleAnswers}
+                        shuffleSeed={shuffleSeed}
                     />
 
                     {/* Controls - Sticky on Mobile */}

@@ -117,6 +117,25 @@ const App: React.FC = () => {
         return s;
     }, [questions, selectedAnswers]);
 
+    const currentOptions = useMemo(() => {
+        if (!currentQuestion) return [];
+        if (!shuffleAnswers) return currentQuestion.options;
+
+        const options = [...currentQuestion.options];
+        let seed = shuffleSeed + currentQuestion.id;
+
+        const random = () => {
+            const x = Math.sin(seed++) * 10000;
+            return x - Math.floor(x);
+        };
+
+        for (let i = options.length - 1; i > 0; i--) {
+            const j = Math.floor(random() * (i + 1));
+            [options[i], options[j]] = [options[j], options[i]];
+        }
+        return options;
+    }, [currentQuestion, shuffleAnswers, shuffleSeed]);
+
     // Keyboard Shortcuts
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -178,15 +197,15 @@ const App: React.FC = () => {
                 }
             } else if (/^[1-9]$/.test(e.key)) {
                 const index = parseInt(e.key, 10) - 1;
-                if (index >= 0 && index < currentQuestion.options.length) {
-                    handleAnswerSelect(currentQuestion.options[index].label);
+                if (index >= 0 && index < currentOptions.length) {
+                    handleAnswerSelect(currentOptions[index].label);
                 }
             }
         };
 
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [currentQuestion, showResult, handleAnswerSelect, handleCheckAnswer, handleNext, handlePrev, handleJumpToQuestion, commandBuffer, showCommandOverlay, currentQIndex, questions.length]);
+    }, [currentQuestion, showResult, handleAnswerSelect, handleCheckAnswer, handleNext, handlePrev, handleJumpToQuestion, commandBuffer, showCommandOverlay, currentQIndex, questions.length, currentOptions]);
 
 
     if (!selectedQuiz) {
@@ -339,11 +358,10 @@ const App: React.FC = () => {
                 <div className="flex-1 flex flex-col justify-center min-h-[auto] md:min-h-[400px]">
                     <QuestionCard
                         question={currentQuestion}
+                        options={currentOptions}
                         selectedAnswers={selectedAnswers[currentQuestion.id] || []}
                         onSelect={handleAnswerSelect}
                         showResult={showResult}
-                        shuffleAnswers={shuffleAnswers}
-                        shuffleSeed={shuffleSeed}
                     />
 
                     {/* Controls - Sticky on Mobile */}

@@ -88,11 +88,11 @@ const App: React.FC = () => {
     };
 
     const handleJumpToQuestion = useCallback((index: number) => {
+        setSelectedAnswers({});
         if (index >= 0 && index < questions.length) {
             setCurrentQIndex(index);
             setShowResult(false);
             setQuizFinished(false);
-            setSelectedAnswers({});
         }
     }, [questions.length]);
 

@@ -1681,7 +1681,7 @@ export const quizData: Question[] = [
     "id": 61,
     "type": "single",
     "points": 1,
-    "correct": ["D"],
+    "correct": ["B"],
     "options": [
       {
         "text": "-5",
@@ -4117,7 +4117,7 @@ export const quizData: Question[] = [
     "id": 149,
     "type": "single",
     "points": 1,
-    "correct": ["A"],
+    "correct": ["B"],
     "options": [
       {
         "text": "Symmetric-key",
@@ -5865,7 +5865,7 @@ export const quizData: Question[] = [
   },
   {
     "id": 211,
-    "type": "single",
+    "type": "multiple",
     "points": 1,
     "correct": ["A", "B", "C", "D"],
     "options": [

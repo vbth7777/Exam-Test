@@ -63,18 +63,32 @@ const App: React.FC = () => {
     const handleNext = useCallback(() => {
         setShowResult(false);
         if (currentQIndex < questions.length - 1) {
-            setCurrentQIndex(prev => prev + 1);
+            const nextIndex = currentQIndex + 1;
+            const nextQ = questions[nextIndex];
+            setSelectedAnswers(prev => {
+                const next = { ...prev };
+                delete next[nextQ.id];
+                return next;
+            });
+            setCurrentQIndex(nextIndex);
         } else {
             setQuizFinished(true);
         }
-    }, [currentQIndex, questions.length]);
+    }, [currentQIndex, questions]);
 
     const handlePrev = useCallback(() => {
         if (currentQIndex > 0) {
             setShowResult(false);
-            setCurrentQIndex(prev => prev - 1);
+            const prevIndex = currentQIndex - 1;
+            const prevQ = questions[prevIndex];
+            setSelectedAnswers(prev => {
+                const next = { ...prev };
+                delete next[prevQ.id];
+                return next;
+            });
+            setCurrentQIndex(prevIndex);
         }
-    }, [currentQIndex]);
+    }, [currentQIndex, questions]);
 
     const handleReset = useCallback(() => {
         setQuizFinished(false);
@@ -88,13 +102,18 @@ const App: React.FC = () => {
     };
 
     const handleJumpToQuestion = useCallback((index: number) => {
-        setSelectedAnswers({});
         if (index >= 0 && index < questions.length) {
+            const targetQ = questions[index];
+            setSelectedAnswers(prev => {
+                const next = { ...prev };
+                delete next[targetQ.id];
+                return next;
+            });
             setCurrentQIndex(index);
             setShowResult(false);
             setQuizFinished(false);
         }
-    }, [questions.length]);
+    }, [questions]);
 
     const checkIsCorrect = (q: Question, answers: string[] | undefined) => {
         if (!answers || answers.length === 0) return false;

@@ -4,7 +4,7 @@ import { quizzes, QuizMetadata } from './data';
 import { Question } from './types';
 import { QuestionCard } from './components/QuestionCard';
 import { QuizSelection } from './components/QuizSelection';
-import { Download, RefreshCw, ChevronRight, ChevronLeft, CheckSquare, ArrowLeft, Shuffle } from 'lucide-react';
+import { Download, RefreshCw, ChevronRight, ChevronLeft, CheckSquare, ArrowLeft, Shuffle, Moon, Sun } from 'lucide-react';
 
 const App: React.FC = () => {
     const [selectedQuiz, setSelectedQuiz] = useState<QuizMetadata | null>(null);
@@ -18,6 +18,15 @@ const App: React.FC = () => {
     const [showNavigator, setShowNavigator] = useState(false);
     const [shuffleAnswers, setShuffleAnswers] = useState(false);
     const [shuffleSeed, setShuffleSeed] = useState(0);
+    const [darkMode, setDarkMode] = useState(true);
+
+    useEffect(() => {
+        if (darkMode) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }, [darkMode]);
 
     const handleQuizSelect = (quiz: QuizMetadata) => {
         setSelectedQuiz(quiz);
@@ -233,19 +242,19 @@ const App: React.FC = () => {
 
     if (quizFinished) {
         return (
-            <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 p-4">
-                <div className="bg-white p-8 rounded-2xl shadow-xl max-w-md w-full text-center">
-                    <h2 className="text-3xl font-bold text-slate-900 mb-4">Quiz Complete!</h2>
+            <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900 p-4 transition-colors duration-300">
+                <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl max-w-md w-full text-center transition-colors duration-300">
+                    <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">Quiz Complete!</h2>
                     <div className="text-6xl font-black text-indigo-600 mb-6">
                         {Math.round((score / questions.length) * 100)}%
                     </div>
-                    <p className="text-slate-600 mb-8 text-lg">
-                        You scored <span className="font-bold text-indigo-700">{score}</span> out of <span className="font-bold text-indigo-700">{questions.length}</span>
+                    <p className="text-slate-600 dark:text-slate-300 mb-8 text-lg">
+                        You scored <span className="font-bold text-indigo-700 dark:text-indigo-400">{score}</span> out of <span className="font-bold text-indigo-700 dark:text-indigo-400">{questions.length}</span>
                     </p>
                     <div className="flex flex-col gap-3">
                         <button
                             onClick={() => setQuizFinished(false)}
-                            className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-white border-2 border-indigo-100 hover:bg-indigo-50 text-indigo-700 rounded-xl font-semibold transition-colors"
+                            className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-white dark:bg-slate-700 border-2 border-indigo-100 dark:border-slate-600 hover:bg-indigo-50 dark:hover:bg-slate-600 text-indigo-700 dark:text-indigo-300 rounded-xl font-semibold transition-colors"
                         >
                             <RefreshCw className="w-5 h-5" /> Review Answers
                         </button>
@@ -257,7 +266,7 @@ const App: React.FC = () => {
                         </button>
                         <button
                             onClick={handleExport}
-                            className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-semibold transition-colors"
+                            className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 rounded-xl font-semibold transition-colors"
                         >
                             <Download className="w-5 h-5" /> Download JSON
                         </button>
@@ -265,17 +274,17 @@ const App: React.FC = () => {
                 </div>
 
                 {/* Review Grid in Finished State */}
-                <div className="w-full max-w-4xl mt-8 bg-white rounded-2xl shadow-lg p-6">
-                    <h3 className="font-bold text-lg text-slate-800 mb-4">Review All Answers</h3>
+                <div className="w-full max-w-4xl mt-8 bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-6 transition-colors duration-300">
+                    <h3 className="font-bold text-lg text-slate-800 dark:text-white mb-4">Review All Answers</h3>
                     <div className="grid grid-cols-[repeat(auto-fill,minmax(3rem,1fr))] gap-2">
                         {questions.map((q, idx) => {
                             const userAns = selectedAnswers[q.id];
                             const hasAnswer = userAns && userAns.length > 0;
                             const isCorrect = checkIsCorrect(q, userAns);
 
-                            let bgClass = 'bg-slate-100 text-slate-400';
+                            let bgClass = 'bg-slate-100 text-slate-400 dark:bg-slate-700 dark:text-slate-500';
                             if (hasAnswer) {
-                                bgClass = isCorrect ? 'bg-emerald-100 text-emerald-800 border border-emerald-200' : 'bg-rose-100 text-rose-800 border border-rose-200';
+                                bgClass = isCorrect ? 'bg-emerald-100 text-emerald-800 border border-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-400 dark:border-emerald-800' : 'bg-rose-100 text-rose-800 border border-rose-200 dark:bg-rose-900/30 dark:text-rose-400 dark:border-rose-800';
                             }
 
                             return (
@@ -302,7 +311,7 @@ const App: React.FC = () => {
     }
 
     return (
-        <div className="min-h-screen bg-slate-50 flex flex-col">
+        <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex flex-col transition-colors duration-300">
             {/* Command Overlay */}
             {showCommandOverlay && (
                 <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white px-6 py-3 rounded-full shadow-2xl font-mono text-lg animate-in fade-in slide-in-from-bottom-4 duration-200">
@@ -311,38 +320,38 @@ const App: React.FC = () => {
             )}
 
             {/* Header */}
-            <header className="bg-white border-b border-slate-200 sticky top-0 z-20 shadow-sm">
+            <header className="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-20 shadow-sm transition-colors duration-300">
                 <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
                     <div className="flex items-center gap-2">
                         <button
                             onClick={handleBackToMenu}
-                            className="p-2 -ml-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-full transition-colors mr-1"
+                            className="p-2 -ml-2 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full transition-colors mr-1"
                         >
                             <ArrowLeft className="w-5 h-5" />
                         </button>
                         <div className="bg-indigo-600 text-white p-1.5 rounded-lg">
                             <CheckSquare className="w-5 h-5" />
                         </div>
-                        <h1 className="font-bold text-slate-800 text-lg hidden sm:block">CS Quiz Master</h1>
+                        <h1 className="font-bold text-slate-800 dark:text-white text-lg hidden sm:block">CS Quiz Master</h1>
                     </div>
 
                     <div className="flex items-center gap-3">
                         <button
                             onClick={handleReset}
                             title="Restart Quiz"
-                            className="p-2 text-slate-500 hover:text-red-600 hover:bg-red-50 rounded-full transition-colors mr-2"
+                            className="p-2 text-slate-500 dark:text-slate-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-full transition-colors mr-2"
                         >
                             <RefreshCw className="w-5 h-5" />
                         </button>
 
-                        <div className="text-sm font-medium text-slate-500 mr-2">
+                        <div className="text-sm font-medium text-slate-500 dark:text-slate-400 mr-2">
                             Question {currentQIndex + 1} / {questions.length}
                         </div>
 
                         <button
                             onClick={handleExport}
                             title="Download JSON"
-                            className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-full transition-colors"
+                            className="p-2 text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 rounded-full transition-colors"
                         >
                             <Download className="w-5 h-5" />
                         </button>
@@ -355,14 +364,21 @@ const App: React.FC = () => {
                                 }
                             }}
                             title="Shuffle Answers"
-                            className={`p-2 rounded-full transition-colors ${shuffleAnswers ? 'text-indigo-600 bg-indigo-50' : 'text-slate-400 hover:text-indigo-600 hover:bg-indigo-50'}`}
+                            className={`p-2 rounded-full transition-colors ${shuffleAnswers ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20' : 'text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20'}`}
                         >
                             <Shuffle className="w-5 h-5" />
+                        </button>
+                        <button
+                            onClick={() => setDarkMode(!darkMode)}
+                            title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+                            className="p-2 text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 rounded-full transition-colors"
+                        >
+                            {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
                         </button>
                     </div>
                 </div>
                 {/* Progress Bar */}
-                <div className="w-full h-1 bg-slate-100">
+                <div className="w-full h-1 bg-slate-100 dark:bg-slate-700">
                     <div
                         className="h-full bg-indigo-600 transition-all duration-300 ease-out"
                         style={{ width: `${((currentQIndex + 1) / questions.length) * 100}%` }}
@@ -384,12 +400,12 @@ const App: React.FC = () => {
                     />
 
                     {/* Controls - Sticky on Mobile */}
-                    <div className="fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-slate-200 md:static md:bg-transparent md:border-0 md:p-0 md:mt-8 z-30">
+                    <div className="fixed bottom-0 left-0 right-0 p-4 bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 md:static md:bg-transparent md:border-0 md:p-0 md:mt-8 z-30 transition-colors duration-300">
                         <div className="flex justify-between items-center max-w-3xl mx-auto w-full">
                             <button
                                 onClick={handlePrev}
                                 disabled={currentQIndex === 0}
-                                className="flex items-center px-3 py-2 text-slate-500 font-medium hover:text-indigo-600 disabled:opacity-30 disabled:hover:text-slate-500 transition-colors text-sm md:text-base"
+                                className="flex items-center px-3 py-2 text-slate-500 dark:text-slate-400 font-medium hover:text-indigo-600 dark:hover:text-indigo-400 disabled:opacity-30 disabled:hover:text-slate-500 dark:disabled:hover:text-slate-400 transition-colors text-sm md:text-base"
                             >
                                 <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 mr-1" /> <span className="hidden xs:inline">Previous</span>
                             </button>
@@ -413,7 +429,7 @@ const App: React.FC = () => {
 
                             <button
                                 onClick={() => setShowNavigator(!showNavigator)}
-                                className="md:hidden p-2 text-slate-500 hover:bg-slate-100 rounded-lg"
+                                className="md:hidden p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg"
                             >
                                 <div className="grid grid-cols-3 gap-0.5 w-5 h-5">
                                     {[...Array(9)].map((_, i) => (
@@ -435,14 +451,14 @@ const App: React.FC = () => {
 
                 {/* Question Navigator Grid */}
                 <div className={`
-                    bg-white border border-slate-200 rounded-xl p-4 md:p-6 shadow-sm
+                    bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 md:p-6 shadow-sm transition-colors duration-300
                     ${showNavigator ? 'block' : 'hidden md:block'}
                 `}>
                     <div className="flex justify-between items-center mb-4">
-                        <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wider">Question Navigator</h3>
+                        <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Question Navigator</h3>
                         <button
                             onClick={() => setShowNavigator(false)}
-                            className="md:hidden text-slate-400 hover:text-slate-600"
+                            className="md:hidden text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
                         >
                             Close
                         </button>
@@ -463,8 +479,8 @@ const App: React.FC = () => {
                             h-9 rounded-md font-medium text-xs transition-all duration-200 flex items-center justify-center border
                             ${isCurrent ? 'ring-2 ring-indigo-600 ring-offset-1 z-10 border-indigo-600 bg-indigo-600 text-white' : 'border-transparent'}
                             ${!isCurrent && hasAnswer
-                                            ? 'bg-indigo-50 text-indigo-700 border-indigo-100 hover:bg-indigo-100'
-                                            : !isCurrent ? 'bg-slate-100 text-slate-600 hover:bg-slate-200' : ''}
+                                            ? 'bg-indigo-50 text-indigo-700 border-indigo-100 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-300 dark:border-indigo-800 dark:hover:bg-indigo-900/50'
+                                            : !isCurrent ? 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600' : ''}
                             `}
                                 >
                                     {idx + 1}
@@ -472,10 +488,10 @@ const App: React.FC = () => {
                             )
                         })}
                     </div>
-                    <div className="mt-4 pt-4 border-t border-slate-100 flex gap-4 md:gap-6 text-xs text-slate-500 justify-center flex-wrap">
+                    <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700 flex gap-4 md:gap-6 text-xs text-slate-500 dark:text-slate-400 justify-center flex-wrap">
                         <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-indigo-600"></div> Current</div>
-                        <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-indigo-50 border border-indigo-100"></div> Answered</div>
-                        <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-slate-100"></div> Unanswered</div>
+                        <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-indigo-50 border border-indigo-100 dark:bg-indigo-900/30 dark:border-indigo-800"></div> Answered</div>
+                        <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-slate-100 dark:bg-slate-700"></div> Unanswered</div>
                     </div>
                 </div>
 
